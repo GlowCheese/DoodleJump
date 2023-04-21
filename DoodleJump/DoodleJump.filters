@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{685a88e6-fbc8-479e-8305-bfd706b9dc45}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScenes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSetting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScenes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Pair.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="components\all.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="elements\Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="elements\all.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="elements\Paddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SDL2 Template.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SDL2 Template.aps" />
+    <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
+    <None Include="SDL2_mixer.dll" />
+    <None Include="SDL2_ttf.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="asset\rickroll.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="asset\loading.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="asset\menu.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="asset\button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="asset\button-on.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\def\jetpack.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\def\left.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\def\left-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\def\njuska.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\def\propeller.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\def\puca.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\def\puca-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\def\right.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\def\right-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\def\tiles.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\ice\jetpack.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\ice\left.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\ice\left-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\ice\njuska.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\ice\propeller.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\ice\puca.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\ice\puca-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\ice\right.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\ice\right-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\ice\tiles.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\jun\jetpack.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\jun\left.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\jun\left-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\jun\njuska.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\jun\propeller.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\jun\puca.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\jun\puca-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\jun\right.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\jun\right-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\jun\tiles.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\soc\jetpack.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\soc\left.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\soc\left-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\soc\propeller.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\soc\puca.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\soc\puca-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\soc\right.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\soc\right-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\soc\tiles.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\stn\jetpack.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\stn\left.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\stn\left-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\stn\njuska.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\stn\propeller.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\stn\puca.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\stn\puca-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\stn\right.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\stn\right-odskok.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="themes\stn\tiles.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="audio\rickroll.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="audio\battle.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="audio\pada.mp3" />
+    <Media Include="audio\title.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="audio\click.mp3" />
+    <Media Include="audio\doo-shoot1.mp3" />
+    <Media Include="audio\doo-shoot2.mp3" />
+    <Media Include="audio\jump.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="monday.ttf" />
+    <Font Include="seana.ttf" />
+  </ItemGroup>
+</Project>

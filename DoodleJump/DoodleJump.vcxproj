@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{b60a40f9-77e6-4930-9638-184e8d203a2d}</ProjectGuid>
+    <RootNamespace>DoodleJump</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>DoodleJump</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\SDL2-2.26.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\SDL2-2.26.3\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="elements\Doodle.cpp" />
+    <ClCompile Include="elements\PadManager.cpp" />
+    <ClCompile Include="scenes\gameover.cpp" />
+    <ClCompile Include="scenes\jumpppp.cpp" />
+    <ClCompile Include="scenes\loading.cpp" />
+    <ClCompile Include="scenes\menu.cpp" />
+    <ClCompile Include="utils\Music.cpp" />
+    <ClCompile Include="utils\Randomizer.cpp" />
+    <ClCompile Include="utils\Sound.cpp" />
+    <ClCompile Include="utils\TexManager.cpp" />
+    <ClCompile Include="utils\Writer.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="elements\Doodle.h" />
+    <ClInclude Include="elements\Button.h" />
+    <ClInclude Include="components.h" />
+    <ClInclude Include="components\Font.h" />
+    <ClInclude Include="components\Pair.h" />
+    <ClInclude Include="elements.h" />
+    <ClInclude Include="elements\PadManager.h" />
+    <ClInclude Include="utils.h" />
+    <ClInclude Include="scenes.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameSetting.h" />
+    <ClInclude Include="elements\Paddle.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="components\Sprite.h" />
+    <ClInclude Include="variables.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SDL2 Template.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DoodleJump.filters" />
+    <None Include="SDL2 Template.aps" />
+    <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
+    <None Include="SDL2_mixer.dll" />
+    <None Include="SDL2_ttf.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="asset\button\button-on.png" />
+    <Image Include="asset\button\button.png" />
+    <Image Include="asset\button\play-button-on.png" />
+    <Image Include="asset\button\play-button.png" />
+    <Image Include="asset\loading.png" />
+    <Image Include="asset\menu.png" />
+    <Image Include="asset\rickroll.png" />
+    <Image Include="logo.jfif" />
+    <Image Include="themes\def\bck.png" />
+    <Image Include="themes\def\jetpack.png" />
+    <Image Include="themes\def\left-odskok.png" />
+    <Image Include="themes\def\left.png" />
+    <Image Include="themes\def\njuska.png" />
+    <Image Include="themes\def\propeller.png" />
+    <Image Include="themes\def\puca-odskok.png" />
+    <Image Include="themes\def\puca.png" />
+    <Image Include="themes\def\right-odskok.png" />
+    <Image Include="themes\def\right.png" />
+    <Image Include="themes\def\tiles.png" />
+    <Image Include="themes\ice\ice-bck.png" />
+    <Image Include="themes\ice\jetpack.png" />
+    <Image Include="themes\ice\left-odskok.png" />
+    <Image Include="themes\ice\left.png" />
+    <Image Include="themes\ice\njuska.png" />
+    <Image Include="themes\ice\propeller.png" />
+    <Image Include="themes\ice\puca-odskok.png" />
+    <Image Include="themes\ice\puca.png" />
+    <Image Include="themes\ice\right-odskok.png" />
+    <Image Include="themes\ice\right.png" />
+    <Image Include="themes\ice\tiles.png" />
+    <Image Include="themes\jun\jetpack.png" />
+    <Image Include="themes\jun\jungle-bck.png" />
+    <Image Include="themes\jun\left-odskok.png" />
+    <Image Include="themes\jun\left.png" />
+    <Image Include="themes\jun\njuska.png" />
+    <Image Include="themes\jun\propeller.png" />
+    <Image Include="themes\jun\puca-odskok.png" />
+    <Image Include="themes\jun\puca.png" />
+    <Image Include="themes\jun\right-odskok.png" />
+    <Image Include="themes\jun\right.png" />
+    <Image Include="themes\jun\tiles.png" />
+    <Image Include="themes\soc\jetpack.png" />
+    <Image Include="themes\soc\left-odskok.png" />
+    <Image Include="themes\soc\left.png" />
+    <Image Include="themes\soc\propeller.png" />
+    <Image Include="themes\soc\puca-odskok.png" />
+    <Image Include="themes\soc\puca.png" />
+    <Image Include="themes\soc\right-odskok.png" />
+    <Image Include="themes\soc\right.png" />
+    <Image Include="themes\soc\soccer-bck.png" />
+    <Image Include="themes\soc\tiles.png" />
+    <Image Include="themes\stn\doodlestein-bck.png" />
+    <Image Include="themes\stn\jetpack.png" />
+    <Image Include="themes\stn\left-odskok.png" />
+    <Image Include="themes\stn\left.png" />
+    <Image Include="themes\stn\njuska.png" />
+    <Image Include="themes\stn\propeller.png" />
+    <Image Include="themes\stn\puca-odskok.png" />
+    <Image Include="themes\stn\puca.png" />
+    <Image Include="themes\stn\right-odskok.png" />
+    <Image Include="themes\stn\right.png" />
+    <Image Include="themes\stn\tiles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="audio\battle.wav" />
+    <Media Include="audio\click.mp3" />
+    <Media Include="audio\doo-shoot1.mp3" />
+    <Media Include="audio\doo-shoot2.mp3" />
+    <Media Include="audio\game-over.wav" />
+    <Media Include="audio\jump.wav" />
+    <Media Include="audio\pada.mp3" />
+    <Media Include="audio\rickroll.wav" />
+    <Media Include="audio\title.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="font.ttf" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
