@@ -2,6 +2,7 @@
 #include "utils.h"
 #include "scenes.h"
 #include "components.h"
+#include "variables.h"
 
 SDL_Event Game::event;
 GameSetting Game::Setting;
@@ -69,3 +70,5 @@ void Game::quit() {
 int Game::Width()  { return Setting.width;  }
 int Game::Height() { return Setting.height; }
 TTF_Font* Game::Font() { return Setting.font; }
+
+int Game::Score() { return int(Global::offset / 10); }

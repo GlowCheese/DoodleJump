@@ -4,6 +4,7 @@
 void GameOver::init() {
 	Music::stop();
 	Sound::play("game-over");
+	PadManager::reset();
 }
 
 void GameOver::handle() {

@@ -52,5 +52,6 @@ public:
 	static void toggleFullscreen();
 
 	/* ========== OTHERS ========== */
+	static int Score();
 	static SDL_Event event;
 };

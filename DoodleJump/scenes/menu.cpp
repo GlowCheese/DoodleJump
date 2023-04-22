@@ -8,10 +8,11 @@ void MainMenu::init() {
 	Global::doodle->velo = Pair(0, 0);
 	Global::doodle->setPos(35, 410);
 
-	Global::doodle->setTex("doo-right");
+	Global::doodle->setTex("def-right");
 
+	Global::offset = 0;
 	PadManager::reset();
-	PadManager::add(40, 530);
+	PadManager::add(40, 530, DEFAULT);
 }
 void MainMenu::handle() {
 	start->handle();

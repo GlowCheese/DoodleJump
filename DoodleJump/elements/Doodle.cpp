@@ -1,11 +1,12 @@
+
 #include "Doodle.h"
 #include "PadManager.h"
 #include "../variables.h"
 
 Doodle::Doodle() {
-	texname = "doo-right";
-	sprite = new Sprite("doo-right");
-	sprite->zoom = 0.7f; velo = Pair(0, 0);
+	texname = "def-right";
+	sprite = new Sprite("def-right");
+	sprite->zoom = 0.6f; velo = Pair(0, 0);
 }
 
 void Doodle::setTex(const char* tex) {
@@ -20,12 +21,12 @@ void Doodle::handle() {
 
 	if (state[SDL_SCANCODE_LEFT]) {
 		velo.x -= 1 + (velo.x > 0);
-		setTex("doo-left");
+		setTex("def-left");
 	}
 
 	if (state[SDL_SCANCODE_RIGHT]) {
 		velo.x += 1 + (velo.x < 0);
-		setTex("doo-right");
+		setTex("def-right");
 	}
 
 	if (velo.x < 0) velo.x += std::min(-velo.x, 0.5f);
@@ -39,7 +40,29 @@ void Doodle::draw(int bright) {
 }
 
 void Doodle::update() {
-	sprite->pos += velo; velo.y += 0.4f;
+	double acc, max_velo;
+	if (Game::Score() < 500) {
+		acc = 0.4;
+		max_velo = -13;
+	}
+	else if (Game::Score() < 1000) {
+		acc = 0.5;
+		max_velo = -14.5;
+	}
+	else if (Game::Score() < 1500) {
+		acc = 0.6;
+		max_velo = -16;
+	}
+	else if (Game::Score() < 2000) {
+		acc = 0.8;
+		max_velo = -18;
+	}
+	else {
+		acc = 1;
+		max_velo = -20;
+	}
+
+	sprite->pos += velo; velo.y += acc;
 
 	if (sprite->pos.x + sprite->w() / 2 >= Game::Width()) {
 		sprite->pos.x = -sprite->w() / 2;
@@ -50,14 +73,14 @@ void Doodle::update() {
 
 	if (velo.y > 0) {
 		int y = sprite->pos.y + sprite->h();
-		int l = sprite->pos.x + 30;
-		int r = sprite->pos.x + sprite->w() - 30;
+		int l = sprite->pos.x + 22;
+		int r = sprite->pos.x + sprite->w() - 22;
 
 		for (Paddle* p : PadManager::PadArray) {
 			if (p->touch(l, r, y)) {
 				Sound::play("jump");
 				sprite->pos.y = p->pos.y - sprite->h();
-				velo.y = -13; break;
+				velo.y = max_velo; break;
 			}
 		}
 	}

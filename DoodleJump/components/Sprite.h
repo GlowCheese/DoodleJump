@@ -31,14 +31,16 @@ public:
 		delete dest;
 	}
 
-	void draw(int bright = 255, int offset = 0) {
+	bool draw(int bright = 255, int offset = 0) {
 		dest->w = w(); dest->x = pos.x_int();
 		dest->h = h(); dest->y = pos.y_int() + offset;
-		
+		if (dest->y >= Game::Height()) return false;
 
 		if (bright != 255) SDL_SetTextureColorMod(tex, bright, bright, bright);
 		SDL_RenderCopy(Game::renderer, tex, src, dest);
 		if (bright != 255) SDL_SetTextureColorMod(tex, 255, 255, 255);
+
+		return true;
 	}
 
 	void fill_zoom() {

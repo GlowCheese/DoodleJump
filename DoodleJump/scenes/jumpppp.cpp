@@ -7,7 +7,7 @@ void Jumpppp::init() {
 	Music::play("battle");
 
 	PadManager::reset();
-	PadManager::add(40, 620);
+	PadManager::add(40, 620, DEFAULT);
 
 	Global::doodle->velo = Pair(0, 0);
 	Global::doodle->setPos(40, 620 - Global::doodle->sprite->h());
@@ -32,11 +32,6 @@ void Jumpppp::update() {
 	fixOffset();
 
 	while (PadManager::add());
-	while (true) {
-		int y_front = PadManager::PadArray.front()->pos.y + Global::offset;
-		if (y_front >= Game::Height()) PadManager::PadArray.pop_front();
-		else break;
-	}
 }
 
 void Jumpppp::render() {
@@ -47,7 +42,7 @@ void Jumpppp::render() {
 	PadManager::draw();
 	Global::doodle->draw();
 
-	Writer::write(std::to_string(int(Global::offset / 10)), Game::Width() - 10, 10, RIGHT);
+	Writer::write(std::to_string(Game::Score()), Game::Width() - 10, 10, RIGHT);
 
 	SDL_RenderPresent(Game::renderer);
 }

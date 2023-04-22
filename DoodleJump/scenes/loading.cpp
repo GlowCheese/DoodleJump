@@ -2,7 +2,7 @@
 #include "../variables.h"
 
 const int Global::PAD_LENGTH;
-float Global::highest_pad;
+float Global::highest_pad[2];
 float Global::offset;
 Doodle* Global::doodle;
 
@@ -29,19 +29,20 @@ void LoadingScene::run() {
 		// loading textures
 		TexManager::add("menu", "asset/menu.png");
 
-		// background
-		TexManager::add("def-bck", "themes/def/bck.png");
-
 		// buttons
 		TexManager::add("play-button", "asset/button/play-button.png");
 		TexManager::add("play-button-on", "asset/button/play-button-on.png");
 
-		// doo-doo
-		TexManager::add("doo-left", "themes/def/left.png");
-		TexManager::add("doo-right", "themes/def/right.png");
-
-		// paddles
+		// default theme
+		TexManager::add("def-bck", "themes/def/bck.png");
+		TexManager::add("def-left", "themes/def/left.png");
+		TexManager::add("def-right", "themes/def/right.png");
 		TexManager::add("def-pad", "themes/def/tiles.png", Rect(0, 0, 118, 34));
+		TexManager::add("def-brok-0", "themes/def/tiles.png", Rect(0, 144, 124, 33));
+		TexManager::add("def-brok-1", "themes/def/tiles.png", Rect(0, 180, 124, 43));
+		TexManager::add("def-brok-2", "themes/def/tiles.png", Rect(0, 230, 124, 58));
+		TexManager::add("def-brok-3", "themes/def/tiles.png", Rect(0, 296, 124, 67));
+
 
 		// sound effects
 		Sound::add("jump", "audio/jump.wav");

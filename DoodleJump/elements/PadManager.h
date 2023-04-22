@@ -3,9 +3,11 @@
 
 class PadManager {
 private:
-	static int nextHeight;
+	static int nextHeight[2];
+	static int getNextHeight(PadType type);
 public:
-	static std::deque<Paddle*> PadArray;
+	static std::vector<Paddle*> PadArray;
 	static void draw(int bright = 255), reset();
-	static bool add(int x = 1411, int y = 1411, PadType = DEFAULT);
+	static bool add(int x = 1411, int y = 1411);
+	static bool add(int x, int y, PadType type);
 };

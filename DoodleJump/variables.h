@@ -4,6 +4,7 @@
 class Global {
 public:
 	static const int PAD_LENGTH = 82;
-	static float highest_pad, offset;
+	static float highest_pad[2];
+	static float offset;
 	static Doodle* doodle;
 };
