@@ -239,13 +239,16 @@
     <Image Include="themes\stn\tiles.png" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="audio\battle.wav" />
+    <Media Include="audio\battle-0.wav" />
+    <Media Include="audio\battle-1.mp3" />
+    <Media Include="audio\battle-2.mp3" />
+    <Media Include="audio\breaks.mp3" />
     <Media Include="audio\click.mp3" />
+    <Media Include="audio\doo-fall.mp3" />
     <Media Include="audio\doo-shoot1.mp3" />
     <Media Include="audio\doo-shoot2.mp3" />
     <Media Include="audio\game-over.wav" />
     <Media Include="audio\jump.wav" />
-    <Media Include="audio\pada.mp3" />
     <Media Include="audio\rickroll.wav" />
     <Media Include="audio\title.wav" />
   </ItemGroup>

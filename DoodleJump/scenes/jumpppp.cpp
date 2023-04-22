@@ -1,16 +1,23 @@
 #include "../scenes.h"
 #include "../variables.h"
 
-void fixOffset() { Global::offset = std::max(Global::offset, 300 - Global::doodle->sprite->pos.y); }
+void fixOffset() {
+	Global::offset = std::max(Global::offset, 280 - Global::doodle->sprite->pos.y);
+	if (Game::Score() >= 2000) Global::offset++;
+}
 
 void Jumpppp::init() {
-	Music::play("battle");
+	switch (Rand(0, 2)) {
+	case 0: Music::play("battle-0"); break;
+	case 1: Music::play("battle-1"); break;
+	case 2: Music::play("battle-2"); break;
+	}
 
 	PadManager::reset();
-	PadManager::add(40, 620, DEFAULT);
+	PadManager::add(40, 600, DEFAULT);
 
 	Global::doodle->velo = Pair(0, 0);
-	Global::doodle->setPos(40, 620 - Global::doodle->sprite->h());
+	Global::doodle->setPos(40, 600 - Global::doodle->sprite->h());
 }
 
 void Jumpppp::handle() {

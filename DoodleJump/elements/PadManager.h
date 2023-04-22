@@ -1,9 +1,10 @@
 #pragma once
 #include "Paddle.h"
+#include "../variables.h"
 
 class PadManager {
 private:
-	static int nextHeight[2];
+	static int nextHeight[Global::PAD_NUM];
 	static int getNextHeight(PadType type);
 public:
 	static std::vector<Paddle*> PadArray;

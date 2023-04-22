@@ -1,11 +1,11 @@
 #include "../scenes.h"
 #include "../variables.h"
 
-const int Global::PAD_LENGTH;
-float Global::highest_pad[2];
 float Global::offset;
-Doodle* Global::doodle;
+const int Global::PAD_NUM;
+float Global::highest_pad[PAD_NUM];
 
+Doodle* Global::doodle;
 Sprite* MainMenu::menu;
 Button* MainMenu::start;
 Sprite* Jumpppp::bck;
@@ -42,10 +42,10 @@ void LoadingScene::run() {
 		TexManager::add("def-brok-1", "themes/def/tiles.png", Rect(0, 180, 124, 43));
 		TexManager::add("def-brok-2", "themes/def/tiles.png", Rect(0, 230, 124, 58));
 		TexManager::add("def-brok-3", "themes/def/tiles.png", Rect(0, 296, 124, 67));
-
-
+		
 		// sound effects
 		Sound::add("jump", "audio/jump.wav");
+		Sound::add("breaks", "audio/breaks.mp3");
 		Sound::add("click", "audio/click.mp3");
 		Sound::add("doo-shoot1", "audio/doo-shoot1.mp3");
 		Sound::add("doo-shoot2", "audio/doo-shoot2.mp3");
@@ -53,7 +53,9 @@ void LoadingScene::run() {
 
 		// game songs
 		Music::add("title", "audio/title.wav");
-		Music::add("battle", "audio/battle.wav");
+		Music::add("battle-0", "audio/battle-0.wav");
+		Music::add("battle-1", "audio/battle-1.mp3");
+		Music::add("battle-2", "audio/battle-2.mp3");
 
 		// declaring elements
 		Global::doodle = new Doodle();

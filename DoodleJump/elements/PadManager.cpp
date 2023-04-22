@@ -1,7 +1,7 @@
 #include "PadManager.h"
 #include "../variables.h"
 
-int PadManager::nextHeight[2];
+int PadManager::nextHeight[Global::PAD_NUM];
 std::vector<Paddle*> PadManager::PadArray;
 
 int PadManager::getNextHeight(PadType type) {
@@ -23,7 +23,7 @@ int PadManager::getNextHeight(PadType type) {
 
 void PadManager::reset() {
 	PadArray.clear();
-	for (int i = 0; i < 2; i++) {
+	for (int i = 0; i < Global::PAD_NUM; i++) {
 		nextHeight[i] = 2 * Game::Height();
 		Global::highest_pad[i] = 2 * Game::Height();
 	}
@@ -73,18 +73,18 @@ bool PadManager::add(int x, int y, PadType type) {
 
 	if (x == 1411) {
 		while (true) {
-			int new_x = Rand(10, Game::Width() - Global::PAD_LENGTH - 10);
+			int new_x = Rand(10, Game::Width() - newPad->width - 10);
 			newPad->pos = Pair(new_x, y);
 
 			bool ok = true;
-			/*for (Paddle* tmp : PadArray) {
+			for (Paddle* tmp : PadArray) {
 				if (newPad->touch(tmp)) {
 					ok = false;
 					break;
 				}
-			}*/
+			}
 
-			if (ok) { x = new_x; break; }
+			if (ok) { break; }
 		}
 	}
 
