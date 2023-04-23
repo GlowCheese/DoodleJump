@@ -15,24 +15,24 @@ SDL_Rect Rect(int w = 0, int h = 0);
 SDL_Rect Rect(int x, int y, int w, int h);
 
 namespace TexManager {
-	void add(const char* title, const char* path, SDL_Rect src = Rect());
-	void fetch(const char* title, SDL_Texture *&tex, SDL_Rect *&src);
+	void add(std::string title, std::string path, SDL_Rect src = Rect());
+	void fetch(std::string title, SDL_Texture *&tex, SDL_Rect *&src);
 }
 
 namespace Music {
-	void add(const char* title, const char* path);
+	void add(std::string title, std::string path);
 
 	void setVolume(int perc);
-	void play(const char* title);
+	void play(std::string title);
 
 	void pause(), resume(), stop();
 }
 
 namespace Sound {
-	void add(const char* title, const char* path);
+	void add(std::string title, std::string path);
 
 	void setVolume(int perc);
-	void play(const char* title);
+	void play(std::string title);
 }
 
 enum Align { LEFT, RIGHT, CENTER };

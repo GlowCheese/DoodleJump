@@ -3,15 +3,13 @@
 
 void fixOffset() {
 	Global::offset = std::max(Global::offset, 280 - Global::doodle->sprite->pos.y);
-	if (Game::Score() >= 2000) Global::offset++;
+	if (Game::Score() >= 3000) Global::offset += 0.7f;
 }
 
 void Jumpppp::init() {
-	switch (Rand(0, 2)) {
-	case 0: Music::play("battle-0"); break;
-	case 1: Music::play("battle-1"); break;
-	case 2: Music::play("battle-2"); break;
-	}
+	std::string tmp = "battle-";
+	tmp += '0' + Rand(0, 5);
+	Music::play(tmp.c_str());
 
 	PadManager::reset();
 	PadManager::add(40, 600, DEFAULT);

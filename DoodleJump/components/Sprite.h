@@ -18,11 +18,11 @@ public:
 	int w() { return zoom * src->w; }
 	int h() { return zoom * src->h; }
 
-	void setTex(const char* title) {
+	void setTex(std::string title) {
 		TexManager::fetch(title, tex, src);
 	}
 
-	Sprite(const char* title) {
+	Sprite(std::string title) {
 		setTex(title);
 		dest = new SDL_Rect();
 	}

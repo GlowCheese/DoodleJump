@@ -2,6 +2,8 @@
 #include "../components.h"
 
 class Doodle {
+private:
+	Uint32 lastJump = 0;
 public:
 	Pair velo;
 	Sprite* sprite;
@@ -10,7 +12,7 @@ public:
 	Doodle();
 	void handle();
 	void update();
-	void setTex(const char* tex);
 	void setPos(int x, int y);
+	void setTex(const char* tex);
 	void draw(int bright = 255);
 };

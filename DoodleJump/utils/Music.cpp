@@ -2,10 +2,10 @@
 #include "../utils.h"
 
 namespace Music {
-	std::map<const char*, int> mp;
+	std::map<std::string, int> mp;
 	std::vector<Mix_Music*> collection;
 
-	Mix_Music* load(const char* path) { return Mix_LoadMUS(path); }
+	Mix_Music* load(std::string path) { return Mix_LoadMUS(path.c_str()); }
 	void setVolume(int perc) {
 		std::cout << "* Music volume set to " << perc << ".\n";
 		Mix_VolumeMusic(perc * 128 / 100);
@@ -25,7 +25,7 @@ namespace Music {
 		}
 	}
 
-	void add(const char* title, const char* path) {
+	void add(std::string title, std::string path) {
 		std::cout << "* Loading music (" << path << "): ";
 		Mix_Music* tmp = load(path);
 		if (tmp == nullptr) {
@@ -39,7 +39,7 @@ namespace Music {
 		}
 	}
 
-	void play(const char* title) {
+	void play(std::string title) {
 		if (mp.find(title) == mp.end()) {
 			std::cout << "* Playing music (" << title << "): FAILED\n";
 			std::cout << "! Error: No music named " << title << "\n";

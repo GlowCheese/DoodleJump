@@ -123,16 +123,22 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\SDL2-2.26.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\SDL2-2.26.3\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="elements\Doodle.cpp" />
+    <ClCompile Include="elements\Paddle\BrokenPad.cpp" />
+    <ClCompile Include="elements\Paddle\DefPad.cpp" />
+    <ClCompile Include="elements\Paddle\Paddle.cpp" />
     <ClCompile Include="elements\PadManager.cpp" />
     <ClCompile Include="scenes\gameover.cpp" />
     <ClCompile Include="scenes\jumpppp.cpp" />
@@ -170,7 +176,9 @@
     <None Include="DoodleJump.filters" />
     <None Include="SDL2 Template.aps" />
     <None Include="SDL2.dll" />
-    <None Include="SDL2_image.dll" />
+    <None Include="SDL2_image.dll">
+      <FileType>Document</FileType>
+    </None>
     <None Include="SDL2_mixer.dll" />
     <None Include="SDL2_ttf.dll" />
   </ItemGroup>
@@ -239,9 +247,12 @@
     <Image Include="themes\stn\tiles.png" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="audio\battle-0.wav" />
+    <Media Include="audio\battle-0.mp3" />
     <Media Include="audio\battle-1.mp3" />
     <Media Include="audio\battle-2.mp3" />
+    <Media Include="audio\battle-3.mp3" />
+    <Media Include="audio\battle-4.mp3" />
+    <Media Include="audio\battle-5.mp3" />
     <Media Include="audio\breaks.mp3" />
     <Media Include="audio\click.mp3" />
     <Media Include="audio\doo-fall.mp3" />
@@ -250,7 +261,7 @@
     <Media Include="audio\game-over.wav" />
     <Media Include="audio\jump.wav" />
     <Media Include="audio\rickroll.wav" />
-    <Media Include="audio\title.wav" />
+    <Media Include="audio\title.mp3" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="font.ttf" />

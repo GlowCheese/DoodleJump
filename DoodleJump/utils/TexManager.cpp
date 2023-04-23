@@ -13,11 +13,11 @@ namespace TexManager {
 	std::map<std::string, int> mp;
 	std::vector<Texture*> collection;
 
-	void add(const char* title, const char* path, SDL_Rect src) {
+	void add(std::string title, std::string path, SDL_Rect src) {
 		std::cout << "* Loading image (" << path << "): ";
 
 		Texture* tmp = new Texture;
-		SDL_Surface* srf = IMG_Load(path);
+		SDL_Surface* srf = IMG_Load(path.c_str());
 		tmp->tex = SDL_CreateTextureFromSurface(Game::renderer, srf);
 
 		if (tmp->tex == nullptr) {
@@ -37,7 +37,7 @@ namespace TexManager {
 		}
 	}
 
-	void fetch(const char* title, SDL_Texture*& tex, SDL_Rect*& src) {
+	void fetch(std::string title, SDL_Texture*& tex, SDL_Rect*& src) {
 		if (mp.find(title) == mp.end()) {
 			std::cout << "* Fetching texture (" << title << "): FAILED\n";
 			std::cout << "! Error: No texture named " << title << "\n";

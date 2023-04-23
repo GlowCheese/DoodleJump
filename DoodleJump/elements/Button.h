@@ -10,13 +10,13 @@ enum ButtonState {
 
 class Button {
 public:
-	const char* title;
+	std::string title;
 	ButtonState state;
 
 	int sz;
 	Sprite *off, *on;
 
-	Button(const char* title, int size) : sz(size) {
+	Button(std::string title, int size) : sz(size) {
 		state = FREE;
 		this->title = title;
 		off = new Sprite(title);

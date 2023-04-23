@@ -37,6 +37,8 @@ void LoadingScene::run() {
 		TexManager::add("def-bck", "themes/def/bck.png");
 		TexManager::add("def-left", "themes/def/left.png");
 		TexManager::add("def-right", "themes/def/right.png");
+		TexManager::add("def-left-odskok", "themes/def/left-odskok.png");
+		TexManager::add("def-right-odskok", "themes/def/right-odskok.png");
 		TexManager::add("def-pad", "themes/def/tiles.png", Rect(0, 0, 118, 34));
 		TexManager::add("def-brok-0", "themes/def/tiles.png", Rect(0, 144, 124, 33));
 		TexManager::add("def-brok-1", "themes/def/tiles.png", Rect(0, 180, 124, 43));
@@ -52,10 +54,13 @@ void LoadingScene::run() {
 		Sound::add("game-over", "audio/game-over.wav");
 
 		// game songs
-		Music::add("title", "audio/title.wav");
-		Music::add("battle-0", "audio/battle-0.wav");
+		Music::add("title", "audio/title.mp3");
+		Music::add("battle-0", "audio/battle-0.mp3");
 		Music::add("battle-1", "audio/battle-1.mp3");
 		Music::add("battle-2", "audio/battle-2.mp3");
+		Music::add("battle-3", "audio/battle-3.mp3");
+		Music::add("battle-4", "audio/battle-4.mp3");
+		Music::add("battle-5", "audio/battle-5.mp3");
 
 		// declaring elements
 		Global::doodle = new Doodle();

@@ -2,17 +2,17 @@
 #include "../utils.h"
 
 namespace Sound {
-	std::map<const char*, int> mp;
+	std::map<std::string, int> mp;
 	std::vector<Mix_Chunk*> collection;
 
-	Mix_Chunk* load(const char* path) { return Mix_LoadWAV(path); }
+	Mix_Chunk* load(std::string path) { return Mix_LoadWAV(path.c_str()); }
 
 	void setVolume(int perc) {
 		std::cout << "* Sound volume set to " << perc << ".\n";
 		Mix_Volume(-1, perc * 128 / 100);
 	}
 
-	void add(const char* title, const char* path) {
+	void add(std::string title, std::string path) {
 		std::cout << "* Loading sound (" << path << "): ";
 		Mix_Chunk* tmp = load(path);
 		if (tmp == nullptr) {
@@ -25,7 +25,7 @@ namespace Sound {
 			std::cout << "OK\n";
 		}
 	}
-	void play(const char* title) {
+	void play(std::string title) {
 
 		if (mp.find(title) == mp.end()) {
 			std::cout << "* Playing sound (" << title << "): FAILED\n";

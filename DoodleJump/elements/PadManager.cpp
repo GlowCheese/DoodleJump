@@ -24,8 +24,8 @@ int PadManager::getNextHeight(PadType type) {
 void PadManager::reset() {
 	PadArray.clear();
 	for (int i = 0; i < Global::PAD_NUM; i++) {
-		nextHeight[i] = 2 * Game::Height();
-		Global::highest_pad[i] = 2 * Game::Height();
+		nextHeight[i] =          Game::Height();
+		Global::highest_pad[i] = Game::Height();
 	}
 }
 
@@ -60,7 +60,7 @@ bool PadManager::add(int x, int y, PadType type) {
 			newPad = new DefPad(x, y);
 			break;
 		case BROKEN:
-			newPad = new BrokePad(x, y);
+			newPad = new BrokenPad(x, y);
 			break;
 		default:
 			newPad = new DefPad(x, y);
