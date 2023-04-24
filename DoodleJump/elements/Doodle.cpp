@@ -43,7 +43,7 @@ void Doodle::update() {
 	if (Game::Score() < 500)        { acc = 0.4; max_velo = -13.0; }
 	else if (Game::Score() < 1000)  { acc = 0.5; max_velo = -14.5; }
 	else if (Game::Score() < 1500)  { acc = 0.6; max_velo = -16.0; }
-	else if (Game::Score() < 2000)  { acc = 0.8; max_velo = -18.0; }
+	else if (Game::Score() < 2000)  { acc = 0.8; max_velo = -19.0; }
 
 	sprite->pos += velo; velo.y += acc;
 
@@ -62,7 +62,12 @@ void Doodle::update() {
 
 		for (Paddle* p : PadManager::PadArray) {
 			if (p->touch(l, r, y, velo.y)) {
-				Sound::play("jump"); velo.y = max_velo;
+				if (p->type == CLOUD)
+					Sound::play("cloud-jump");
+				else
+					Sound::play("jump");
+
+				velo.y = max_velo;
 				sprite->pos.y = p->pos.y - sprite->h();
 				lastJump = SDL_GetTicks(); break;
 			}

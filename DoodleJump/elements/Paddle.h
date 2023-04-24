@@ -2,7 +2,7 @@
 #include "../Game.h"
 #include "../components.h"
 
-enum PadType { DEFAULT = 0, BROKEN = 1 };
+enum PadType { DEFAULT = 0, BROKEN = 1, CLOUD = 2 };
 
 class Paddle {
 public:
@@ -20,6 +20,8 @@ public:
 class DefPad : public Paddle {
 public:
 	Sprite* sprite;
+	~DefPad() { delete sprite; }
+
 	DefPad(int x, int y);
 	bool touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);
@@ -29,8 +31,25 @@ class BrokenPad : public Paddle {
 public:
 	Sprite* sprite[4];
 	Uint32 lastTouch = -1;
+	~BrokenPad() {
+		delete[] *sprite;
+	}
 
 	BrokenPad(int x, int y);
+	bool touch(int l, int r, int y, int velo);
+	bool draw(int bright = 255, int offset = 0);
+};
+
+class CloudPad : public Paddle {
+public:
+	Sprite* sprite;
+	Uint32 lastTouch = -1;
+
+	CloudPad(int x, int y);
+	~CloudPad() {
+		SDL_DestroyTexture(sprite->tex);
+		delete sprite;
+	}
 	bool touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);
 };

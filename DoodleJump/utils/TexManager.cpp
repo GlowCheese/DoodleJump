@@ -13,28 +13,39 @@ namespace TexManager {
 	std::map<std::string, int> mp;
 	std::vector<Texture*> collection;
 
-	void add(std::string title, std::string path, SDL_Rect src) {
-		std::cout << "* Loading image (" << path << "): ";
-
-		Texture* tmp = new Texture;
+	SDL_Texture* load(std::string path) {
 		SDL_Surface* srf = IMG_Load(path.c_str());
-		tmp->tex = SDL_CreateTextureFromSurface(Game::renderer, srf);
+		SDL_Texture* tex = SDL_CreateTextureFromSurface(Game::renderer, srf);
+		SDL_FreeSurface(srf);
 
-		if (tmp->tex == nullptr) {
-			std::cout << "FAILED\n";
+		if (tex == nullptr) {
 			throw(TEXTURE_ERROR);
 		}
 		else {
+			return tex;
+		}
+	}
+
+	void add(std::string title, std::string path, SDL_Rect src) {
+		std::cout << "* Loading image (" << path << "): ";
+
+		try {
+			Texture* tmp = new Texture;
+			tmp->tex = load(path);
 			tmp->src = new SDL_Rect(src);
 			if (src.w == 0) {
-				tmp->src->w = srf->w;
-				tmp->src->h = srf->h;
+				SDL_QueryTexture(tmp->tex, NULL, NULL, &tmp->src->w, &tmp->src->h);
 			}
 
 			mp[title] = int(collection.size());
 			collection.push_back(tmp);
+
 			std::cout << "OK\n";
+		} catch (...) {
+			std::cout << "FAILED\n";
+			throw;
 		}
+		
 	}
 
 	void fetch(std::string title, SDL_Texture*& tex, SDL_Rect*& src) {

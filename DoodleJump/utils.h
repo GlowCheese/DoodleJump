@@ -15,6 +15,7 @@ SDL_Rect Rect(int w = 0, int h = 0);
 SDL_Rect Rect(int x, int y, int w, int h);
 
 namespace TexManager {
+	SDL_Texture* load(std::string path);
 	void add(std::string title, std::string path, SDL_Rect src = Rect());
 	void fetch(std::string title, SDL_Texture *&tex, SDL_Rect *&src);
 }

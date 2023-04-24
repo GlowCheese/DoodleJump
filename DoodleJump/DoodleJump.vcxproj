@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClCompile Include="elements\Doodle.cpp" />
     <ClCompile Include="elements\Paddle\BrokenPad.cpp" />
+    <ClCompile Include="elements\Paddle\CloudPad.cpp" />
     <ClCompile Include="elements\Paddle\DefPad.cpp" />
     <ClCompile Include="elements\Paddle\Paddle.cpp" />
     <ClCompile Include="elements\PadManager.cpp" />
@@ -255,6 +256,7 @@
     <Media Include="audio\battle-5.mp3" />
     <Media Include="audio\breaks.mp3" />
     <Media Include="audio\click.mp3" />
+    <Media Include="audio\cloud-jump.mp3" />
     <Media Include="audio\doo-fall.mp3" />
     <Media Include="audio\doo-shoot1.mp3" />
     <Media Include="audio\doo-shoot2.mp3" />

@@ -4,7 +4,7 @@
 
 class PadManager {
 private:
-	static int nextHeight[Global::PAD_NUM];
+	static int nextHeight[2];
 	static int getNextHeight(PadType type);
 public:
 	static std::vector<Paddle*> PadArray;

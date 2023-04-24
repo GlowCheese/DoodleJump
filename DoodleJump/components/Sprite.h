@@ -5,12 +5,12 @@
 
 class Sprite {
 private:
-	SDL_Texture* tex;
 	SDL_Rect* src;
 	SDL_Rect* dest;
 
 public:
 	Pair pos;
+	SDL_Texture* tex;
 	double zoom = 1.0f;
 
 	int src_w() { return src->w; }
@@ -21,9 +21,18 @@ public:
 	void setTex(std::string title) {
 		TexManager::fetch(title, tex, src);
 	}
+	void setTex(std::string path, SDL_Rect src) {
+		this->tex = TexManager::load(path);
+		this->src = new SDL_Rect(src);
+	}
 
 	Sprite(std::string title) {
 		setTex(title);
+		dest = new SDL_Rect();
+	}
+
+	Sprite(std::string path, SDL_Rect src) {
+		setTex(path, src);
 		dest = new SDL_Rect();
 	}
 
@@ -36,9 +45,8 @@ public:
 		dest->h = h(); dest->y = pos.y_int() + offset;
 		if (dest->y >= Game::Height()) return false;
 
-		if (bright != 255) SDL_SetTextureColorMod(tex, bright, bright, bright);
+		SDL_SetTextureColorMod(tex, bright, bright, bright);
 		SDL_RenderCopy(Game::renderer, tex, src, dest);
-		if (bright != 255) SDL_SetTextureColorMod(tex, 255, 255, 255);
 
 		return true;
 	}

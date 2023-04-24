@@ -2,8 +2,7 @@
 #include "../variables.h"
 
 float Global::offset;
-const int Global::PAD_NUM;
-float Global::highest_pad[PAD_NUM];
+float Global::highest_pad[2];
 
 Doodle* Global::doodle;
 Sprite* MainMenu::menu;
@@ -44,9 +43,10 @@ void LoadingScene::run() {
 		TexManager::add("def-brok-1", "themes/def/tiles.png", Rect(0, 180, 124, 43));
 		TexManager::add("def-brok-2", "themes/def/tiles.png", Rect(0, 230, 124, 58));
 		TexManager::add("def-brok-3", "themes/def/tiles.png", Rect(0, 296, 124, 67));
-		
+
 		// sound effects
 		Sound::add("jump", "audio/jump.wav");
+		Sound::add("cloud-jump", "audio/cloud-jump.mp3");
 		Sound::add("breaks", "audio/breaks.mp3");
 		Sound::add("click", "audio/click.mp3");
 		Sound::add("doo-shoot1", "audio/doo-shoot1.mp3");

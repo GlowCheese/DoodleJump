@@ -1,40 +1,42 @@
 #include "PadManager.h"
 #include "../variables.h"
 
-int PadManager::nextHeight[Global::PAD_NUM];
+int PadManager::nextHeight[2];
 std::vector<Paddle*> PadManager::PadArray;
 
 int PadManager::getNextHeight(PadType type) {
-	int index = static_cast<int>(type);
+	int index = type == BROKEN;
 
 	switch (type) {
-	case DEFAULT:
-		if (nextHeight[index] <= Global::highest_pad[index] - 40) break;
-		nextHeight[index] = Rand(Global::highest_pad[index] - 180, Global::highest_pad[index] - 40);
-		break;
 	case BROKEN:
-		if (nextHeight[index] <= Global::highest_pad[index] - 200) break;
-		nextHeight[index] = Rand(Global::highest_pad[index] - 600, Global::highest_pad[index] - 200);
+		if (nextHeight[1] <= Global::highest_pad[1] - 200) break;
+		nextHeight[1] = Rand(Global::highest_pad[1] - 600, Global::highest_pad[1] - 200);
+		break;
+	default:
+		if (nextHeight[0] <= Global::highest_pad[0] - 40) break;
+		nextHeight[0] = Rand(Global::highest_pad[0] - 180, Global::highest_pad[0] - 40);
 		break;
 	}
+	
 	
 	return nextHeight[index];
 }
 
 void PadManager::reset() {
 	PadArray.clear();
-	for (int i = 0; i < Global::PAD_NUM; i++) {
-		nextHeight[i] =          Game::Height();
-		Global::highest_pad[i] = Game::Height();
-	}
+	nextHeight[0] = Global::highest_pad[0] = Game::Height();
+	nextHeight[1] = Global::highest_pad[1] = Game::Height();
 }
 
 void PadManager::draw(int bright) {
 	std::vector<Paddle*> newPadArray;
 
 	for (Paddle* pad : PadArray) {
-		if (pad->draw(bright, Global::offset))
+		if (pad->draw(bright, Global::offset)) {
 			newPadArray.push_back(pad);
+		} else {
+			delete pad;
+		}
 	}
 
 	PadArray = newPadArray;
@@ -42,7 +44,15 @@ void PadManager::draw(int bright) {
 
 bool PadManager::add(int x, int y) {
 	bool ok = false;
-	ok |= add(x, y, DEFAULT);
+	int tmp = Rand(0, 99);
+
+	if (tmp < 80) {
+		ok |= add(x, y, DEFAULT);
+	}
+	else {
+		ok |= add(x, y, CLOUD);
+	}
+	
 	ok |= add(x, y, BROKEN);
 	return ok;
 }
@@ -52,7 +62,7 @@ bool PadManager::add(int x, int y, PadType type) {
 
 	if (y + Global::offset < -30) return false;
 
-	Global::highest_pad[static_cast<int>(type)] = y;
+	Global::highest_pad[type == BROKEN] = y;
 
 	Paddle* newPad; try {
 		switch (type) {
@@ -61,6 +71,9 @@ bool PadManager::add(int x, int y, PadType type) {
 			break;
 		case BROKEN:
 			newPad = new BrokenPad(x, y);
+			break;
+		case CLOUD:
+			newPad = new CloudPad(x, y);
 			break;
 		default:
 			newPad = new DefPad(x, y);
