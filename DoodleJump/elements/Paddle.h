@@ -9,7 +9,7 @@ public:
 	Pair pos; PadType type;
 	int width = 0, height = 0;
 
-	~Paddle() {}
+	virtual ~Paddle() {}
 	Paddle(int x, int y, PadType type) : pos(x, y), type(type) {}
 
 	virtual bool touch(Paddle* another);
@@ -20,7 +20,6 @@ public:
 class DefPad : public Paddle {
 public:
 	Sprite* sprite;
-	~DefPad() { delete sprite; }
 
 	DefPad(int x, int y);
 	bool touch(int l, int r, int y, int velo);
@@ -31,9 +30,6 @@ class BrokenPad : public Paddle {
 public:
 	Sprite* sprite[4];
 	Uint32 lastTouch = -1;
-	~BrokenPad() {
-		delete[] *sprite;
-	}
 
 	BrokenPad(int x, int y);
 	bool touch(int l, int r, int y, int velo);
@@ -48,7 +44,6 @@ public:
 	CloudPad(int x, int y);
 	~CloudPad() {
 		SDL_DestroyTexture(sprite->tex);
-		delete sprite;
 	}
 	bool touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);

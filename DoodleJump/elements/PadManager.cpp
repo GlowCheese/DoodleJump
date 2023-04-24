@@ -23,6 +23,7 @@ int PadManager::getNextHeight(PadType type) {
 }
 
 void PadManager::reset() {
+	for (Paddle* pad : PadArray) delete pad;
 	PadArray.clear();
 	nextHeight[0] = Global::highest_pad[0] = Game::Height();
 	nextHeight[1] = Global::highest_pad[1] = Game::Height();
