@@ -61,13 +61,20 @@ void Doodle::update() {
 		int r = sprite->pos.x + sprite->w() - 22;
 
 		for (Paddle* p : PadManager::PadArray) {
-			if (p->touch(l, r, y, velo.y)) {
+			int touch = p->touch(l, r, y, velo.y);
+			if (touch == 1) {
 				if (p->type == CLOUD)
 					Sound::play("cloud-jump");
 				else
 					Sound::play("jump");
 
 				velo.y = max_velo;
+				sprite->pos.y = p->pos.y - sprite->h();
+				lastJump = SDL_GetTicks(); break;
+			} else if (touch == 2) {
+				Sound::play("boing");
+
+				velo.y = 2*max_velo;
 				sprite->pos.y = p->pos.y - sprite->h();
 				lastJump = SDL_GetTicks(); break;
 			}

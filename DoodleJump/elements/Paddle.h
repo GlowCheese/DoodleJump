@@ -13,16 +13,19 @@ public:
 	Paddle(int x, int y, PadType type) : pos(x, y), type(type) {}
 
 	virtual bool touch(Paddle* another);
-	virtual bool touch(int l, int r, int y, int velo) { return false; }
+	virtual int touch(int l, int r, int y, int velo) { return false; }
 	virtual bool draw(int bright = 255, int offset = 0) { return false; }
 };
 
 class DefPad : public Paddle {
 public:
-	Sprite* sprite;
+	int last_bounce = -1;
+	int spring_offset;
+
+	Sprite* sprite, *spring;
 
 	DefPad(int x, int y);
-	bool touch(int l, int r, int y, int velo);
+	int touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);
 };
 
@@ -32,7 +35,7 @@ public:
 	Uint32 lastTouch = -1;
 
 	BrokenPad(int x, int y);
-	bool touch(int l, int r, int y, int velo);
+	int touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);
 };
 
@@ -45,6 +48,6 @@ public:
 	~CloudPad() {
 		SDL_DestroyTexture(sprite->tex);
 	}
-	bool touch(int l, int r, int y, int velo);
+	int touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);
 };

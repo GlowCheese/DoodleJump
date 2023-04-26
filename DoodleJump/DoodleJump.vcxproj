@@ -254,6 +254,7 @@
     <Media Include="audio\battle-3.mp3" />
     <Media Include="audio\battle-4.mp3" />
     <Media Include="audio\battle-5.mp3" />
+    <Media Include="audio\boing.mp3" />
     <Media Include="audio\breaks.mp3" />
     <Media Include="audio\click.mp3" />
     <Media Include="audio\cloud-jump.mp3" />

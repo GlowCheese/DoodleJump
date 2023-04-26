@@ -43,8 +43,11 @@ void LoadingScene::run() {
 		TexManager::add("def-brok-1", "themes/def/tiles.png", Rect(0, 180, 124, 43));
 		TexManager::add("def-brok-2", "themes/def/tiles.png", Rect(0, 230, 124, 58));
 		TexManager::add("def-brok-3", "themes/def/tiles.png", Rect(0, 296, 124, 67));
+		TexManager::add("spring-0", "themes/def/tiles.png", Rect(808, 198, 34, 23));
+		TexManager::add("spring-1", "themes/def/tiles.png", Rect(808, 230, 34, 55));
 
 		// sound effects
+		Sound::add("boing", "audio/boing.mp3");
 		Sound::add("jump", "audio/jump.wav");
 		Sound::add("cloud-jump", "audio/cloud-jump.mp3");
 		Sound::add("breaks", "audio/breaks.mp3");

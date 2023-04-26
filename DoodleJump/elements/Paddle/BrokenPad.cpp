@@ -10,12 +10,12 @@ BrokenPad::BrokenPad(int x, int y) : Paddle(x, y, BROKEN) {
 	height = sprite[0]->h();
 }
 
-bool BrokenPad::touch(int l, int r, int y, int velo) {
+int BrokenPad::touch(int l, int r, int y, int velo) {
 	if (lastTouch != -1) return false;
 
-	if (sprite[0]->pos.y < y) return false;
-	if (sprite[0]->pos.y > y + velo) return false;
-	int l2 = sprite[0]->pos.x, r2 = l2 + width - 1;
+	if (pos.y < y) return false;
+	if (pos.y > y + velo) return false;
+	int l2 = pos.x, r2 = l2 + width - 1;
 	if (r >= l2 && l <= r2) {
 		lastTouch = SDL_GetTicks();
 		Sound::play("breaks");
