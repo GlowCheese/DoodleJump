@@ -203,7 +203,7 @@
     <Image Include="themes\def\right-odskok.png" />
     <Image Include="themes\def\right.png" />
     <Image Include="themes\def\tiles.png" />
-    <Image Include="themes\ice\ice-bck.png" />
+    <Image Include="themes\ice\bck.png" />
     <Image Include="themes\ice\jetpack.png" />
     <Image Include="themes\ice\left-odskok.png" />
     <Image Include="themes\ice\left.png" />
@@ -214,8 +214,8 @@
     <Image Include="themes\ice\right-odskok.png" />
     <Image Include="themes\ice\right.png" />
     <Image Include="themes\ice\tiles.png" />
+    <Image Include="themes\jun\bck.png" />
     <Image Include="themes\jun\jetpack.png" />
-    <Image Include="themes\jun\jungle-bck.png" />
     <Image Include="themes\jun\left-odskok.png" />
     <Image Include="themes\jun\left.png" />
     <Image Include="themes\jun\njuska.png" />
@@ -225,6 +225,7 @@
     <Image Include="themes\jun\right-odskok.png" />
     <Image Include="themes\jun\right.png" />
     <Image Include="themes\jun\tiles.png" />
+    <Image Include="themes\soc\bck.png" />
     <Image Include="themes\soc\jetpack.png" />
     <Image Include="themes\soc\left-odskok.png" />
     <Image Include="themes\soc\left.png" />
@@ -233,9 +234,8 @@
     <Image Include="themes\soc\puca.png" />
     <Image Include="themes\soc\right-odskok.png" />
     <Image Include="themes\soc\right.png" />
-    <Image Include="themes\soc\soccer-bck.png" />
     <Image Include="themes\soc\tiles.png" />
-    <Image Include="themes\stn\doodlestein-bck.png" />
+    <Image Include="themes\stn\bck.png" />
     <Image Include="themes\stn\jetpack.png" />
     <Image Include="themes\stn\left-odskok.png" />
     <Image Include="themes\stn\left.png" />

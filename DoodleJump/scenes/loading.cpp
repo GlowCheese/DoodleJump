@@ -33,18 +33,22 @@ void LoadingScene::run() {
 		TexManager::add("play-button-on", "asset/button/play-button-on.png");
 
 		// default theme
-		TexManager::add("def-bck", "themes/def/bck.png");
-		TexManager::add("def-left", "themes/def/left.png");
-		TexManager::add("def-right", "themes/def/right.png");
-		TexManager::add("def-left-odskok", "themes/def/left-odskok.png");
-		TexManager::add("def-right-odskok", "themes/def/right-odskok.png");
-		TexManager::add("def-pad", "themes/def/tiles.png", Rect(0, 0, 118, 34));
-		TexManager::add("def-brok-0", "themes/def/tiles.png", Rect(0, 144, 124, 33));
-		TexManager::add("def-brok-1", "themes/def/tiles.png", Rect(0, 180, 124, 43));
-		TexManager::add("def-brok-2", "themes/def/tiles.png", Rect(0, 230, 124, 58));
-		TexManager::add("def-brok-3", "themes/def/tiles.png", Rect(0, 296, 124, 67));
-		TexManager::add("spring-0", "themes/def/tiles.png", Rect(808, 198, 34, 23));
-		TexManager::add("spring-1", "themes/def/tiles.png", Rect(808, 230, 34, 55));
+		for (int i = 0; i < Game::theme.size(); i++) {
+			Game::selectedTheme = i; std::string th = Game::theme[i];
+			TexManager::add(Game::getThemeIMG("bck"), "themes/" + th + "/bck.png");
+			TexManager::add(Game::getThemeIMG("left"), "themes/" + th + "/left.png");
+			TexManager::add(Game::getThemeIMG("right"), "themes/" + th + "/right.png");
+			TexManager::add(Game::getThemeIMG("left-odskok"), "themes/" + th + "/left-odskok.png");
+			TexManager::add(Game::getThemeIMG("right-odskok"), "themes/" + th + "/right-odskok.png");
+			TexManager::add(Game::getThemeIMG("pad"), "themes/" + th + "/tiles.png", Rect(0, 0, 118, 34));
+			TexManager::add(Game::getThemeIMG("brok-0"), "themes/" + th + "/tiles.png", Rect(0, 144, 124, 33));
+			TexManager::add(Game::getThemeIMG("brok-1"), "themes/" + th + "/tiles.png", Rect(0, 180, 124, 43));
+			TexManager::add(Game::getThemeIMG("brok-2"), "themes/" + th + "/tiles.png", Rect(0, 230, 124, 58));
+			TexManager::add(Game::getThemeIMG("brok-3"), "themes/" + th + "/tiles.png", Rect(0, 296, 124, 67));
+			TexManager::add(Game::getThemeIMG("spring-0"), "themes/" + th + "/tiles.png", Rect(808, 198, 34, 23));
+			TexManager::add(Game::getThemeIMG("spring-1"), "themes/" + th + "/tiles.png", Rect(808, 230, 34, 55));
+		}
+		Game::selectedTheme = 0;
 
 		// sound effects
 		Sound::add("boing", "audio/boing.mp3");
@@ -75,10 +79,10 @@ void LoadingScene::run() {
 		MainMenu::start->set_pos(90, 160);
 		MainMenu::start->set_zoom(0.7f);
 
-		Jumpppp::bck = new Sprite("def-bck");
+		Jumpppp::bck = new Sprite(Game::getThemeIMG("bck"));
 		Jumpppp::bck->fill_zoom();
 
-		GameOver::bck = new Sprite("def-bck");
+		GameOver::bck = new Sprite(Game::getThemeIMG("bck"));
 		GameOver::bck->fill_zoom();
 	}
 	catch (...) {
@@ -87,7 +91,6 @@ void LoadingScene::run() {
 	}
 
 	std::cout << "\n* All textures loaded successfully!\n\n";
-	SDL_Delay(1000);
 
 	MainMenu::init();
 	Game::game_state = MAIN_MENU;

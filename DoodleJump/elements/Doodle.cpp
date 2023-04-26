@@ -3,12 +3,12 @@
 #include "../variables.h"
 
 Doodle::Doodle() {
-	texname = "def-right";
-	sprite = new Sprite("def-right");
+	texname = Game::getThemeIMG("right");
+	sprite = new Sprite(Game::getThemeIMG("right"));
 	sprite->zoom = 0.6f; velo = Pair(0, 0);
 }
 
-void Doodle::setTex(const char* tex) {
+void Doodle::setTex(std::string tex) {
 	if (texname != tex) {
 		texname = tex;
 		sprite->setTex(tex);
@@ -19,12 +19,12 @@ void Doodle::handle() {
 	const Uint8* state = SDL_GetKeyboardState(NULL);
 
 	if (state[SDL_SCANCODE_LEFT]) {
-		setTex("def-left");
+		setTex(Game::getThemeIMG("left"));
 		velo.x -= 1 + (velo.x > 0);
 	}
 
 	if (state[SDL_SCANCODE_RIGHT]) {
-		setTex("def-right");
+		setTex(Game::getThemeIMG("right"));
 		velo.x += 1 + (velo.x < 0);
 	}
 
@@ -82,11 +82,11 @@ void Doodle::update() {
 	}
 
 	if (SDL_GetTicks() - lastJump <= 300) {
-		if (texname == "def-left") setTex("def-left-odskok");
-		if (texname == "def-right") setTex("def-right-odskok");
+		if (texname == Game::getThemeIMG("left")) setTex(Game::getThemeIMG("left-odskok"));
+		if (texname == Game::getThemeIMG("right")) setTex(Game::getThemeIMG("right-odskok"));
 	} else {
-		if (texname == "def-left-odskok") setTex("def-left");
-		if (texname == "def-right-odskok") setTex("def-right");
+		if (texname == Game::getThemeIMG("left-odskok")) setTex(Game::getThemeIMG("left"));
+		if (texname == Game::getThemeIMG("right-odskok")) setTex(Game::getThemeIMG("right"));
 	}
 }
 

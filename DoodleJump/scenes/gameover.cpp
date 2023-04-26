@@ -26,6 +26,10 @@ void GameOver::run() {
 
 	for (int i = Game::Height(); i >= Game::Height() / 2 - 100; i -= 2) {
 		render(i, std::min(255, i - (Game::Height() / 2 - 100)));
+		SDL_PollEvent(&Game::event);
+		switch (Game::event.type) {
+		case SDL_QUIT: throw(BRAVO);
+		}
 	}
 
 	MainMenu::init();

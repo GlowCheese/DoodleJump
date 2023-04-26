@@ -33,6 +33,7 @@ enum GAME_STATE {
 };
 
 
+
 /* ========== MAIN NAMESPACE ========== */
 class Game {
 public:
@@ -49,9 +50,12 @@ public:
 	/* ========== SETTING ========== */
 	static TTF_Font* Font();
 	static int Width(), Height();
-	static void toggleFullscreen();
 
 	/* ========== OTHERS ========== */
 	static int Score();
 	static SDL_Event event;
+
+	static int selectedTheme;
+	static std::string getThemeIMG(std::string img);
+	static std::vector<std::string> theme;
 };

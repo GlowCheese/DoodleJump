@@ -8,8 +8,10 @@ SDL_Event Game::event;
 GameSetting Game::Setting;
 GAME_STATE Game::game_state;
 
+int Game::selectedTheme = 0;
 SDL_Window* Game::window = nullptr;
 SDL_Renderer* Game::renderer = nullptr;
+std::vector<std::string> Game::theme = { "def", "ice", "jun", "soc", "stn" };
 
 void Game::run() {
 	SDL_PollEvent(&Game::event);
@@ -72,3 +74,7 @@ int Game::Height() { return Setting.height; }
 TTF_Font* Game::Font() { return Setting.font; }
 
 int Game::Score() { return int(Global::offset / 10); }
+
+std::string Game::getThemeIMG(std::string img) {
+	return theme[selectedTheme] + "-" + img;
+}

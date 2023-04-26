@@ -13,6 +13,6 @@ public:
 	void handle();
 	void update();
 	void setPos(int x, int y);
-	void setTex(const char* tex);
+	void setTex(std::string tex);
 	void draw(int bright = 255);
 };
