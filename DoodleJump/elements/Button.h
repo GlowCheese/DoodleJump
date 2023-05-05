@@ -4,6 +4,7 @@
 
 enum ButtonState {
 	FREE,
+	INSIDE,
 	HOLDING,
 	CLICKED
 };
@@ -14,19 +15,25 @@ public:
 	ButtonState state;
 
 	int sz;
-	Sprite *off, *on;
+	Sprite *off, *in, *on;
 
-	Button(std::string title, int size) : sz(size) {
+	Button(const std::string title) {
 		state = FREE;
 		this->title = title;
 		off = new Sprite(title);
 
+		std::string title_in(title);
+		title_in += "-in";
+		in = new Sprite(title_in);
+
 		std::string title_on(title);
 		title_on += "-on";
-		on = new Sprite(title_on.c_str());
+		on = new Sprite(title_on);
+
+
 	}
-	void set_zoom(double z) { off->zoom = on->zoom = z; }
-	void set_pos(int x, int y) { off->pos = on->pos = Pair(x, y); }
+	void set_zoom(double z) { off->zoom = in->zoom = on->zoom = z; }
+	void set_pos(int x, int y) { off->pos = in->pos = on->pos = Pair(x, y); }
 
 	bool inside(int x, int y) {
 		if (x < on->pos.x_int()) return false;
@@ -47,7 +54,7 @@ public:
 			if (mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) {
 				state = HOLDING;
 			} else {
-				state = FREE;
+				state = INSIDE;
 			}
 			if (Game::event.type == SDL_MOUSEBUTTONDOWN) {
 				Sound::play("click");
@@ -63,6 +70,8 @@ public:
 	void draw(int bright = 255) {
 		if (state == FREE) {
 			off->draw(bright);
+		} else if (state == INSIDE) {
+			in->draw(bright);
 		} else {
 			on->draw(bright);
 		}

@@ -1,14 +1,18 @@
-#include "../scenes.h"
+#include "scenes.h"
 #include "../variables.h"
 
 float Global::offset;
 float Global::highest_pad[2];
 
 Doodle* Global::doodle;
+
 Sprite* MainMenu::menu;
-Button* MainMenu::start;
 Sprite* Jumpppp::bck;
 Sprite* GameOver::bck;
+
+Button* MainMenu::start;
+Button* MainMenu::leftTheme;
+Button* MainMenu::rightTheme;
 
 void LoadingScene::run() {
 	try {
@@ -29,24 +33,29 @@ void LoadingScene::run() {
 		TexManager::add("menu", "asset/menu.png");
 
 		// buttons
-		TexManager::add("play-button", "asset/button/play-button.png");
-		TexManager::add("play-button-on", "asset/button/play-button-on.png");
+		for (std::string s : {"play", "left", "right"}) {
+			TexManager::add(s + "-button", "asset/button/" + s + "-button.png");
+			TexManager::add(s + "-button-in", "asset/button/" + s + "-button-in.png");
+			TexManager::add(s + "-button-on", "asset/button/" + s + "-button-on.png");
+		}
 
 		// default theme
 		for (int i = 0; i < Game::theme.size(); i++) {
-			Game::selectedTheme = i; std::string th = Game::theme[i];
-			TexManager::add(Game::getThemeIMG("bck"), "themes/" + th + "/bck.png");
-			TexManager::add(Game::getThemeIMG("left"), "themes/" + th + "/left.png");
-			TexManager::add(Game::getThemeIMG("right"), "themes/" + th + "/right.png");
-			TexManager::add(Game::getThemeIMG("left-odskok"), "themes/" + th + "/left-odskok.png");
-			TexManager::add(Game::getThemeIMG("right-odskok"), "themes/" + th + "/right-odskok.png");
-			TexManager::add(Game::getThemeIMG("pad"), "themes/" + th + "/tiles.png", Rect(0, 0, 118, 34));
-			TexManager::add(Game::getThemeIMG("brok-0"), "themes/" + th + "/tiles.png", Rect(0, 144, 124, 33));
-			TexManager::add(Game::getThemeIMG("brok-1"), "themes/" + th + "/tiles.png", Rect(0, 180, 124, 43));
-			TexManager::add(Game::getThemeIMG("brok-2"), "themes/" + th + "/tiles.png", Rect(0, 230, 124, 58));
-			TexManager::add(Game::getThemeIMG("brok-3"), "themes/" + th + "/tiles.png", Rect(0, 296, 124, 67));
-			TexManager::add(Game::getThemeIMG("spring-0"), "themes/" + th + "/tiles.png", Rect(808, 198, 34, 23));
-			TexManager::add(Game::getThemeIMG("spring-1"), "themes/" + th + "/tiles.png", Rect(808, 230, 34, 55));
+			Game::selectedTheme = i; std::string th = "themes/" + Game::theme[i];
+			TexManager::add(Game::getThemeIMG("bck"), th + "/bck.png");
+			TexManager::add(Game::getThemeIMG("left"), th + "/left.png");
+			TexManager::add(Game::getThemeIMG("right"), th + "/right.png");
+			TexManager::add(Game::getThemeIMG("left-odskok"), th + "/left-odskok.png");
+			TexManager::add(Game::getThemeIMG("right-odskok"), th + "/right-odskok.png");
+			TexManager::add(Game::getThemeIMG("pad"), th + "/tiles.png", Rect(0, 0, 118, 34));
+			TexManager::add(Game::getThemeIMG("brok-0"), th + "/tiles.png", Rect(0, 143, 124, 34));
+			TexManager::add(Game::getThemeIMG("brok-1"), th + "/tiles.png", Rect(0, 180, 124, 43));
+			TexManager::add(Game::getThemeIMG("brok-2"), th + "/tiles.png", Rect(0, 230, 124, 58));
+			TexManager::add(Game::getThemeIMG("brok-3"), th + "/tiles.png", Rect(0, 296, 124, 67));
+			TexManager::add(Game::getThemeIMG("spring-0"), th + "/tiles.png", Rect(808, 198, 34, 23));
+			TexManager::add(Game::getThemeIMG("spring-1"), th + "/tiles.png", Rect(808, 230, 34, 55));
+			TexManager::add(Game::getThemeIMG("horz-pad"), th + "/tiles.png", Rect(0, 34, 118, 34));
+			TexManager::add(Game::getThemeIMG("vert-pad"), th + "/tiles.png", Rect(0, 71, 118, 34));
 		}
 		Game::selectedTheme = 0;
 
@@ -75,7 +84,7 @@ void LoadingScene::run() {
 		MainMenu::menu = new Sprite("menu");
 		MainMenu::menu->fill_zoom();
 
-		MainMenu::start = new Button("play-button", 15);
+		MainMenu::start = new Button("play-button");
 		MainMenu::start->set_pos(90, 160);
 		MainMenu::start->set_zoom(0.7f);
 

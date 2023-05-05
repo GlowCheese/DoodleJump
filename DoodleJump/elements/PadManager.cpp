@@ -18,8 +18,11 @@ int PadManager::getNextHeight(PadType type) {
 		break;
 	}
 	
-	
 	return nextHeight[index];
+}
+
+void PadManager::update() {
+	for (Paddle* pad : PadArray) pad->update();
 }
 
 void PadManager::reset() {
@@ -47,11 +50,14 @@ bool PadManager::add(int x, int y) {
 	bool ok = false;
 	int tmp = Rand(0, 99);
 
-	if (tmp < 80) {
+	if (tmp < 75) {
 		ok |= add(x, y, DEFAULT);
-	}
-	else {
+	} else if (tmp < 90) {
 		ok |= add(x, y, CLOUD);
+	} else if (tmp < 95) {
+		ok |= add(x, y, VERTICAL);
+	} else {
+		ok |= add(x, y, HORIZONTAL);
 	}
 	
 	ok |= add(x, y, BROKEN);
@@ -76,6 +82,12 @@ bool PadManager::add(int x, int y, PadType type) {
 		case CLOUD:
 			newPad = new CloudPad(x, y);
 			break;
+		case VERTICAL:
+			newPad = new VertPad(x, y);
+			break;
+		case HORIZONTAL:
+			newPad = new HorzPad(x, y);
+			break;
 		default:
 			newPad = new DefPad(x, y);
 			break;
@@ -87,7 +99,9 @@ bool PadManager::add(int x, int y, PadType type) {
 
 	if (x == 1411) {
 		while (true) {
-			int new_x = Rand(10, Game::Width() - newPad->width - 10);
+			int new_x = type != HORIZONTAL
+			? Rand(10, Game::Width() - newPad->width - 10)
+			: Rand(80, Game::Width() - newPad->width - 80);
 			newPad->pos = Pair(new_x, y);
 
 			bool ok = true;

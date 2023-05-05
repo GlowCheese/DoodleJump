@@ -1,6 +1,6 @@
 #include "Game.h"
 #include "utils.h"
-#include "scenes.h"
+#include "scenes/scenes.h"
 #include "components.h"
 #include "variables.h"
 

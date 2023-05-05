@@ -1,4 +1,4 @@
-#include "../scenes.h"
+#include "scenes.h"
 #include "../variables.h"
 
 void fixOffset() {
@@ -37,6 +37,7 @@ void Jumpppp::update() {
 	fixOffset();
 
 	while (PadManager::add());
+	PadManager::update();
 }
 
 void Jumpppp::render() {

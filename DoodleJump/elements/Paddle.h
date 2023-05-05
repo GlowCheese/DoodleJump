@@ -2,7 +2,7 @@
 #include "../Game.h"
 #include "../components.h"
 
-enum PadType { DEFAULT = 0, BROKEN = 1, CLOUD = 2 };
+enum PadType { DEFAULT = 0, BROKEN = 1, CLOUD = 2, VERTICAL = 3, HORIZONTAL = 4 };
 
 class Paddle {
 public:
@@ -13,18 +13,49 @@ public:
 	Paddle(int x, int y, PadType type) : pos(x, y), type(type) {}
 
 	virtual bool touch(Paddle* another);
+	virtual void update() {}
 	virtual int touch(int l, int r, int y, int velo) { return false; }
 	virtual bool draw(int bright = 255, int offset = 0) { return false; }
 };
 
 class DefPad : public Paddle {
 public:
-	int last_bounce = -1;
 	int spring_offset;
+	int last_bounce = -1;
 
 	Sprite* sprite, *spring;
 
 	DefPad(int x, int y);
+	int touch(int l, int r, int y, int velo);
+	bool draw(int bright = 255, int offset = 0);
+};
+
+class VertPad : public Paddle {
+public:
+	int spring_offset;
+	bool going_up = true;
+	float padOffset = 0;
+	int last_bounce = -1;
+
+	Sprite* sprite, * spring;
+
+	void update();
+	VertPad(int x, int y);
+	int touch(int l, int r, int y, int velo);
+	bool draw(int bright = 255, int offset = 0);
+};
+
+class HorzPad : public Paddle {
+public:
+	int spring_offset;
+	bool going_left = true;
+	float padOffset = 0;
+	int last_bounce = -1;
+
+	Sprite* sprite, * spring;
+
+	void update();
+	HorzPad(int x, int y);
 	int touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);
 };

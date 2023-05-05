@@ -1,4 +1,4 @@
-#include "../scenes.h"
+#include "scenes.h"
 #include "../variables.h"
 
 void GameOver::init() {

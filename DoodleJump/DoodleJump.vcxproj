@@ -139,7 +139,9 @@
     <ClCompile Include="elements\Paddle\BrokenPad.cpp" />
     <ClCompile Include="elements\Paddle\CloudPad.cpp" />
     <ClCompile Include="elements\Paddle\DefPad.cpp" />
+    <ClCompile Include="elements\Paddle\HorzPad.cpp" />
     <ClCompile Include="elements\Paddle\Paddle.cpp" />
+    <ClCompile Include="elements\Paddle\VertPad.cpp" />
     <ClCompile Include="elements\PadManager.cpp" />
     <ClCompile Include="scenes\gameover.cpp" />
     <ClCompile Include="scenes\jumpppp.cpp" />
@@ -162,7 +164,7 @@
     <ClInclude Include="elements.h" />
     <ClInclude Include="elements\PadManager.h" />
     <ClInclude Include="utils.h" />
-    <ClInclude Include="scenes.h" />
+    <ClInclude Include="scenes\scenes.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameSetting.h" />
     <ClInclude Include="elements\Paddle.h" />
@@ -184,10 +186,18 @@
     <None Include="SDL2_ttf.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="asset\button\button-in.png" />
     <Image Include="asset\button\button-on.png" />
     <Image Include="asset\button\button.png" />
+    <Image Include="asset\button\left-button-in.png" />
+    <Image Include="asset\button\left-button-on.png" />
+    <Image Include="asset\button\left-button.png" />
+    <Image Include="asset\button\play-button-in.png" />
     <Image Include="asset\button\play-button-on.png" />
     <Image Include="asset\button\play-button.png" />
+    <Image Include="asset\button\right-button-in.png" />
+    <Image Include="asset\button\right-button-on.png" />
+    <Image Include="asset\button\right-button.png" />
     <Image Include="asset\loading.png" />
     <Image Include="asset\menu.png" />
     <Image Include="asset\rickroll.png" />

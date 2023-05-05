@@ -1,8 +1,8 @@
 #pragma once
-#include "Game.h"
-#include "utils.h"
-#include "elements.h"
-#include "components.h"
+#include "../Game.h"
+#include "../utils.h"
+#include "../elements.h"
+#include "../components.h"
 
 class LoadingScene {
 public:
@@ -12,6 +12,8 @@ class MainMenu {
 public:
 	static Sprite* menu;
 	static Button* start;
+	static Button* leftTheme;
+	static Button* rightTheme;
 	static void init();
 	static void handle();
 	static void update();
