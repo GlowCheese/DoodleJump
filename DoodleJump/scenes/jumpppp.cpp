@@ -1,15 +1,20 @@
 #include "scenes.h"
 #include "../variables.h"
 
+float newOffset;
 void fixOffset() {
-	Global::offset = std::max(Global::offset, 280 - Global::doodle->sprite->pos.y);
-	if (Game::Score() >= 3000) Global::offset += 0.7f;
+	newOffset = std::max({ newOffset, Global::offset, 300 - Global::doodle->sprite->pos.y });
+	Global::offset += (newOffset - Global::offset) * 0.07f;
+	
+	if (Game::Score() >= 3000) Global::offset += 0.5f;
 }
 
 void Jumpppp::init() {
 	std::string tmp = "battle-";
 	tmp += '0' + Rand(0, 5);
 	Music::play(tmp.c_str());
+	
+	newOffset = -Game::Height();
 
 	PadManager::reset();
 	PadManager::add(40, 600, DEFAULT);
@@ -19,16 +24,6 @@ void Jumpppp::init() {
 }
 
 void Jumpppp::handle() {
-	if (Game::event.type == SDL_MOUSEBUTTONDOWN) {
-		if (Game::event.button.button == SDL_BUTTON_LEFT) {
-			if (Rand(0, 1)) {
-				Sound::play("doo-shoot1");
-			}
-			else {
-				Sound::play("doo-shoot2");
-			}
-		}
-	}
 	Global::doodle->handle();
 }
 
@@ -38,6 +33,8 @@ void Jumpppp::update() {
 
 	while (PadManager::add());
 	PadManager::update();
+
+	Bullet::update();
 }
 
 void Jumpppp::render() {
@@ -47,6 +44,7 @@ void Jumpppp::render() {
 	bck->draw();
 	PadManager::draw();
 	Global::doodle->draw();
+	Bullet::draw();
 
 	Writer::write(std::to_string(Game::Score()), Game::Width() - 10, 10, RIGHT);
 

@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="elements\Bullet.cpp" />
     <ClCompile Include="elements\Doodle.cpp" />
     <ClCompile Include="elements\Paddle\BrokenPad.cpp" />
     <ClCompile Include="elements\Paddle\CloudPad.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="elements\Bullet.h" />
     <ClInclude Include="elements\Doodle.h" />
     <ClInclude Include="elements\Button.h" />
     <ClInclude Include="components.h" />
@@ -186,6 +188,7 @@
     <None Include="SDL2_ttf.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="asset\bullets.png" />
     <Image Include="asset\button\button-in.png" />
     <Image Include="asset\button\button-on.png" />
     <Image Include="asset\button\button.png" />
@@ -239,6 +242,7 @@
     <Image Include="themes\soc\jetpack.png" />
     <Image Include="themes\soc\left-odskok.png" />
     <Image Include="themes\soc\left.png" />
+    <Image Include="themes\soc\njuska.png" />
     <Image Include="themes\soc\propeller.png" />
     <Image Include="themes\soc\puca-odskok.png" />
     <Image Include="themes\soc\puca.png" />

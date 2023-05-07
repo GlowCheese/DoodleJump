@@ -17,15 +17,15 @@ HorzPad::HorzPad(int x, int y)
 
 void HorzPad::update() {
 	if (going_left) {
-		pos.x -= 1.3f;
-		padOffset -= 1.3f;
+		pos.x -= 1.5f;
+		padOffset -= 1.5f;
 		if (padOffset < -70) {
 			going_left = false;
 		}
 	}
 	else {
-		pos.x += 1.3f;
-		padOffset += 1.3f;
+		pos.x += 1.5f;
+		padOffset += 1.5f;
 		if (padOffset > 70) {
 			going_left = true;
 		}

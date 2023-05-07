@@ -8,6 +8,7 @@
 #include <map>
 #include <queue>
 #include <tuple>
+#include <math.h>
 #include <random>
 #include <chrono>
 #include <vector>

@@ -4,6 +4,7 @@
 void MainMenu::init() {
 	Music::play("title");
 	start->state = FREE;
+	leftTheme->state = FREE;
 
 	Global::doodle->velo = Pair(0, 0);
 	Global::doodle->setPos(35, 410);

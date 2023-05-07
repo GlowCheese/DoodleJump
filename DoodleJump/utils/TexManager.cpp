@@ -45,7 +45,6 @@ namespace TexManager {
 			std::cout << "FAILED\n";
 			throw;
 		}
-		
 	}
 
 	void fetch(std::string title, SDL_Texture*& tex, SDL_Rect*& src) {
