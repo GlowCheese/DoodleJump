@@ -4,26 +4,32 @@
 #include "Bullet.h"
 
 Doodle::Doodle() {
-	texname = Game::getThemeIMG("right");
-	sprite = new Sprite(Game::getThemeIMG("right"));
+	texname = "right";
+	sprite = new Sprite("right");
 	sprite->zoom = 0.6f; velo = Pair(0, 0);
 
-	puca = new Sprite(Game::getThemeIMG("puca"));
+	puca = new Sprite("puca");
 	puca->zoom = 0.6f;
 
-	njuska = new Sprite(Game::getThemeIMG("njuska"));
+	njuska = new Sprite("njuska");
 	njuska->zoom = 0.6f;
+}
+
+Doodle::~Doodle() {
+	delete sprite;
+	delete puca;
+	delete njuska;
 }
 
 void Doodle::setTex(std::string tex) {
 	if (texname != tex) {
 		texname = tex;
 		sprite->setTex(tex);
-		if (tex == Game::getThemeIMG("left-odskok")
-		|| tex == Game::getThemeIMG("right-odskok")) {
-			puca->setTex(Game::getThemeIMG("puca-odskok"));
+		if (tex == "left-odskok"
+		|| tex == "right-odskok") {
+			puca->setTex("puca-odskok");
 		} else {
-			puca->setTex(Game::getThemeIMG("puca"));
+			puca->setTex("puca");
 		}
 	}
 }
@@ -32,12 +38,12 @@ void Doodle::handle() {
 	const Uint8* state = SDL_GetKeyboardState(NULL);
 
 	if (state[SDL_SCANCODE_LEFT]) {
-		setTex(Game::getThemeIMG("left"));
+		setTex("left");
 		velo.x -= 1 + (velo.x > 0);
 	}
 
 	if (state[SDL_SCANCODE_RIGHT]) {
-		setTex(Game::getThemeIMG("right"));
+		setTex("right");
 		velo.x += 1 + (velo.x < 0);
 	}
 
@@ -94,18 +100,18 @@ void Doodle::update() {
 
 	sprite->pos += velo; velo.y += acc;
 
-	if (sprite->pos.x + sprite->w() / 2 >= Game::Width()) {
-		sprite->pos.x = -sprite->w() / 2;
+	if (getX() + sprite->w() / 2 >= Game::Width()) {
+		getX() = -sprite->w() / 2;
 	}
-	if (sprite->pos.x + sprite->w() / 2 < 0) {
-		sprite->pos.x = Game::Width() - sprite->w() / 2 - 1;
+	if (getX() + sprite->w() / 2 < 0) {
+		getX() = Game::Width() - sprite->w() / 2 - 1;
 	}
 
 	if (velo.y > 0) {
 		// check if doodle can jump on any paddle
-		int y = sprite->pos.y + sprite->h();
-		int l = sprite->pos.x + 22;
-		int r = sprite->pos.x + sprite->w() - 22;
+		int y = getY() + sprite->h();
+		int l = getX() + 22;
+		int r = getX() + sprite->w() - 22;
 
 		for (Paddle* p : PadManager::PadArray) {
 			int touch = p->touch(l, r, y, velo.y);
@@ -116,34 +122,34 @@ void Doodle::update() {
 					Sound::play("jump");
 
 				velo.y = max_velo;
-				sprite->pos.y = p->pos.y - sprite->h();
+				getY() = p->pos.y - sprite->h();
 				lastJump = SDL_GetTicks(); break;
 			} else if (touch == 2) {
 				Sound::play("boing");
 
 				velo.y = 2*max_velo;
-				sprite->pos.y = p->pos.y - sprite->h();
+				getY() = p->pos.y - sprite->h();
 				lastJump = SDL_GetTicks(); break;
 			}
 		}
 	}
 
 	if (SDL_GetTicks() - lastJump <= 300) {
-		if (texname == Game::getThemeIMG("left")) setTex(Game::getThemeIMG("left-odskok"));
-		if (texname == Game::getThemeIMG("right")) setTex(Game::getThemeIMG("right-odskok"));
+		if (texname == "left") setTex("left-odskok");
+		if (texname == "right") setTex("right-odskok");
 	} else {
-		if (texname == Game::getThemeIMG("left-odskok")) setTex(Game::getThemeIMG("left"));
-		if (texname == Game::getThemeIMG("right-odskok")) setTex(Game::getThemeIMG("right"));
+		if (texname == "left-odskok") setTex("left");
+		if (texname == "right-odskok") setTex("right");
 	}
 }
 
 float Doodle::getAngle() {
 	int x1, y1; SDL_GetMouseState(&x1, &y1);
-	int x2 = Game::Width()/2, y2 = Game::Height();
+	int x2 = getX() + sprite->w()/2, y2 = Game::Height();
 	float ans = atan2(x1 - x2, y2 - y1);
 	return std::max(-45.0, std::min(45.0, ans * 180 / acos(-1)));
 }
 
-void Doodle::setPos(int x, int y) {
-	sprite->pos = Pair(x, y);
-}
+float &Doodle::getX() { return sprite->pos.x; }
+float &Doodle::getY() { return sprite->pos.y; }
+void Doodle::setPos(float x, float y) { sprite->pos = Pair(x, y); }

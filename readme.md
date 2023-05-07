@@ -1,7 +1,9 @@
 # Doodle Jump (v3.0)
 
 ![](https://i.kym-cdn.com/photos/images/newsfeed/001/870/641/6c9.gif)
+
 ~~Don't ask me about where the game preview is,~~
+
 ~~cuz I don't know about it either~~
 
 ## Description
@@ -33,7 +35,7 @@ Main tasks:
 - [x] Adding game's levels for ascending difficulties
 - [x] Adding more theme songs
 - [ ] Add power-ups to enhance gameplay
-- [ ] Optimize memory usage
+- [x] Optimize memory usage
 - [ ] Enhance UI appearance
 - [ ] Adding more paddles
 - [ ] Adding more monsters

@@ -1,10 +1,10 @@
 #include "../Paddle.h"
 
 BrokenPad::BrokenPad(int x, int y) : Paddle(x, y, BROKEN) {
-	sprite[0] = new Sprite(Game::getThemeIMG("brok-0"));
-	sprite[1] = new Sprite(Game::getThemeIMG("brok-1"));
-	sprite[2] = new Sprite(Game::getThemeIMG("brok-2"));
-	sprite[3] = new Sprite(Game::getThemeIMG("brok-3"));
+	sprite[0] = new Sprite("brok-0");
+	sprite[1] = new Sprite("brok-1");
+	sprite[2] = new Sprite("brok-2");
+	sprite[3] = new Sprite("brok-3");
 	for (int i = 0; i < 4; sprite[i++]->zoom = 0.55f);
 	width = sprite[0]->w();
 	height = sprite[0]->h();

@@ -13,8 +13,8 @@ struct Pellet {
 
 	Pellet(int x, int y, int angle) : visible(true) {
 		sprite = new Sprite(Game::getThemeIMG("bullet"));
-		this->x() = x; vy = -25 * cos(angle*acos(-1)/180);
-		this->y() = y; vx =  25 * sin(angle*acos(-1)/180);
+		this->x() = x; vy = -22 * cos(angle*acos(-1)/180);
+		this->y() = y; vx =  22 * sin(angle*acos(-1)/180);
 		sprite->zoom = 0.6f;
 	}
 	~Pellet() { delete sprite; }
@@ -30,7 +30,7 @@ void Bullet::update() {
 		bul->sprite->pos.x += bul->vx;
 		bul->sprite->pos.y += bul->vy;
 		if (++bul->angle == 360) bul->angle = 0;
-		bul->vy += 1.0f; std::cout << bul->sprite->pos.y << ' ' << bul->vy << '\n';
+		bul->vy += 1.0f;
 	}
 }
 

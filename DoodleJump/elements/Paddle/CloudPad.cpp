@@ -2,7 +2,8 @@
 
 CloudPad::CloudPad(int x, int y)
 	: Paddle(x, y, CLOUD) {
-	sprite = new Sprite("themes/def/tiles.png", Rect(0, 107, 118, 34));
+	std::string theme = Game::theme[Game::selectedTheme];
+	sprite = new Sprite("themes/" + theme + "/tiles.png", Rect(0, 107, 118, 34));
 	sprite->zoom = 0.6f;
 	width = sprite->w();
 	height = sprite->h();

@@ -13,10 +13,12 @@ public:
 	int lastShoot = -1;
 
 	Doodle();
+	~Doodle();
 	void handle();
 	void update();
 	float getAngle();
-	void setPos(int x, int y);
+	float &getX(), &getY();
+	void setPos(float x, float y);
 	void setTex(std::string tex);
 	void draw(int bright = 255);
 };

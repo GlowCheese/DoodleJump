@@ -3,6 +3,7 @@
 
 float Global::offset;
 float Global::highest_pad[2];
+int Global::themeTexCount = 0;
 
 Doodle* Global::doodle;
 
@@ -39,33 +40,13 @@ void LoadingScene::run() {
 			TexManager::add(s + "-button-on", "asset/button/" + s + "-button-on.png");
 		}
 
-		// default theme
-		for (int i = 0; i < Game::theme.size(); i++) {
-			Game::selectedTheme = i; std::string th = "themes/" + Game::theme[i];
-			TexManager::add(Game::getThemeIMG("bck"), th + "/bck.png");
-			TexManager::add(Game::getThemeIMG("left"), th + "/left.png");
-			TexManager::add(Game::getThemeIMG("right"), th + "/right.png");
-			TexManager::add(Game::getThemeIMG("puca"), th + "/puca.png");
-			TexManager::add(Game::getThemeIMG("njuska"), th + "/njuska.png");
-			TexManager::add(Game::getThemeIMG("puca-odskok"), th + "/puca-odskok.png");
-			TexManager::add(Game::getThemeIMG("left-odskok"), th + "/left-odskok.png");
-			TexManager::add(Game::getThemeIMG("right-odskok"), th + "/right-odskok.png");
-			TexManager::add(Game::getThemeIMG("pad"), th + "/tiles.png", Rect(0, 0, 118, 34));
-			TexManager::add(Game::getThemeIMG("brok-0"), th + "/tiles.png", Rect(0, 143, 124, 34));
-			TexManager::add(Game::getThemeIMG("brok-1"), th + "/tiles.png", Rect(0, 180, 124, 43));
-			TexManager::add(Game::getThemeIMG("brok-2"), th + "/tiles.png", Rect(0, 230, 124, 58));
-			TexManager::add(Game::getThemeIMG("brok-3"), th + "/tiles.png", Rect(0, 296, 124, 67));
-			TexManager::add(Game::getThemeIMG("spring-0"), th + "/tiles.png", Rect(808, 198, 34, 23));
-			TexManager::add(Game::getThemeIMG("spring-1"), th + "/tiles.png", Rect(808, 230, 34, 55));
-			TexManager::add(Game::getThemeIMG("horz-pad"), th + "/tiles.png", Rect(0, 34, 118, 34));
-			TexManager::add(Game::getThemeIMG("vert-pad"), th + "/tiles.png", Rect(0, 71, 118, 34));
-		}
 		TexManager::add("def-bullet", "asset/bullets.png", Rect(1, 2, 22, 23));
 		TexManager::add("ice-bullet", "asset/bullets.png", Rect(43, 64, 24, 25));
 		TexManager::add("jun-bullet", "asset/bullets.png", Rect(99, 3, 27, 22));
 		TexManager::add("soc-bullet", "asset/bullets.png", Rect(3, 66, 30, 40));
 		TexManager::add("stn-bullet", "asset/bullets.png", Rect(99, 3, 27, 22));
-		Game::selectedTheme = 0;
+
+		TexManager::loadTheme(0, false);
 
 		// sound effects
 		Sound::add("boing", "audio/boing.mp3");
@@ -100,10 +81,10 @@ void LoadingScene::run() {
 		MainMenu::leftTheme->set_pos(20, 200);
 		MainMenu::leftTheme->set_zoom(0.7f);
 
-		Jumpppp::bck = new Sprite(Game::getThemeIMG("bck"));
+		Jumpppp::bck = new Sprite("bck");
 		Jumpppp::bck->fill_zoom();
 
-		GameOver::bck = new Sprite(Game::getThemeIMG("bck"));
+		GameOver::bck = new Sprite("bck");
 		GameOver::bck->fill_zoom();
 	}
 	catch (...) {
