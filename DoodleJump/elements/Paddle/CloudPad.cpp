@@ -1,9 +1,21 @@
 #include "../Paddle.h"
 
+CloudPad::~CloudPad() {
+	delete sprite;
+}
+
+SDL_Rect CloudPad::getRect() {
+	int x = pos.x - 3;
+	int y = pos.y - 3;
+	int w = sprite->w() + 3;
+	int h = sprite->h() + 3;
+
+	return { x, y, w, h };
+}
+
 CloudPad::CloudPad(int x, int y)
 	: Paddle(x, y, CLOUD) {
-	std::string theme = Game::theme[Game::selectedTheme];
-	sprite = new Sprite("themes/" + theme + "/tiles.png", Rect(0, 107, 118, 34));
+	sprite = new Sprite("cloud");
 	sprite->zoom = 0.6f;
 	width = sprite->w();
 	height = sprite->h();
@@ -29,6 +41,8 @@ bool CloudPad::draw(int bright, int offset) {
 			SDL_SetTextureAlphaMod(sprite->tex,
 				255 * (300 - (SDL_GetTicks() - lastTouch)) / 300);
 		}
+	} else {
+		SDL_SetTextureAlphaMod(sprite->tex, 255);
 	}
 
 	sprite->pos = pos;

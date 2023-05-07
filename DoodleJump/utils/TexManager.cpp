@@ -47,6 +47,7 @@ namespace TexManager {
 		TexManager::add("left-odskok", theme + "left-odskok.png");
 		TexManager::add("right-odskok", theme + "right-odskok.png");
 		TexManager::add("pad", theme + "tiles.png", Rect(0, 0, 118, 34));
+		TexManager::add("cloud", theme + "tiles.png", Rect(0, 107, 118, 34));
 		TexManager::add("brok-0", theme + "tiles.png", Rect(0, 143, 124, 34));
 		TexManager::add("brok-1", theme + "tiles.png", Rect(0, 180, 124, 43));
 		TexManager::add("brok-2", theme + "tiles.png", Rect(0, 230, 124, 58));

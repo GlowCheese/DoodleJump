@@ -18,6 +18,11 @@ HorzPad::HorzPad(int x, int y)
 	}
 }
 
+HorzPad::~HorzPad() {
+	delete sprite;
+	delete spring;
+}
+
 void HorzPad::update() {
 	if (going_left) {
 		pos.x -= 1.5f;
@@ -33,6 +38,15 @@ void HorzPad::update() {
 			going_left = true;
 		}
 	}
+}
+
+SDL_Rect HorzPad::getRect() {
+	int x = pos.x - 77;
+	int y = pos.y - 7;
+	int w = sprite->w() + 154;
+	int h = sprite->h() + 7;
+
+	return { x, y, w, h };
 }
 
 int HorzPad::touch(int l, int r, int y, int velo) {

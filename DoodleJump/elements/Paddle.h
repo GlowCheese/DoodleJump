@@ -12,7 +12,9 @@ public:
 	virtual ~Paddle() {}
 	Paddle(int x, int y, PadType type) : pos(x, y), type(type) {}
 
+	virtual SDL_Rect getRect() { return SDL_Rect(); };
 	virtual bool touch(Paddle* another);
+
 	virtual void update() {}
 	virtual int touch(int l, int r, int y, int velo) { return false; }
 	virtual bool draw(int bright = 255, int offset = 0) { return false; }
@@ -23,8 +25,10 @@ public:
 	int spring_offset;
 	int last_bounce = -1;
 
+	~DefPad();
 	Sprite* sprite, *spring;
 
+	SDL_Rect getRect();
 	DefPad(int x, int y);
 	int touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);
@@ -37,9 +41,11 @@ public:
 	float padOffset = 0;
 	int last_bounce = -1;
 
+	~VertPad();
 	Sprite* sprite, * spring;
 
 	void update();
+	SDL_Rect getRect();
 	VertPad(int x, int y);
 	int touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);
@@ -52,9 +58,11 @@ public:
 	float padOffset = 0;
 	int last_bounce = -1;
 
+	~HorzPad();
 	Sprite* sprite, * spring;
 
 	void update();
+	SDL_Rect getRect();
 	HorzPad(int x, int y);
 	int touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);
@@ -65,6 +73,9 @@ public:
 	Sprite* sprite[4];
 	Uint32 lastTouch = -1;
 
+	~BrokenPad();
+
+	SDL_Rect getRect();
 	BrokenPad(int x, int y);
 	int touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);
@@ -75,10 +86,10 @@ public:
 	Sprite* sprite;
 	Uint32 lastTouch = -1;
 
+	~CloudPad();
+
+	SDL_Rect getRect();
 	CloudPad(int x, int y);
-	~CloudPad() {
-		SDL_DestroyTexture(sprite->tex);
-	}
 	int touch(int l, int r, int y, int velo);
 	bool draw(int bright = 255, int offset = 0);
 };

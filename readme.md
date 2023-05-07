@@ -44,7 +44,7 @@ Main tasks:
 - [ ] Highscores?
 - [ ] Achievements?
 - [ ] Games' analytics?
-- [ ] Fix overlapping paddles bug
+- [x] Fix overlapping paddles bug
 
 Additional tasks:
 - [ ] Introduce Jump King mode

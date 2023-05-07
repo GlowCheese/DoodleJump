@@ -1,5 +1,21 @@
 #include "../Paddle.h"
 
+BrokenPad::~BrokenPad() {
+	delete sprite[0];
+	delete sprite[1];
+	delete sprite[2];
+	delete sprite[3];
+}
+
+SDL_Rect BrokenPad::getRect() {
+	int x = pos.x - 3;
+	int y = pos.y - 3;
+	int w = sprite[0]->w() + 3;
+	int h = sprite[0]->h() + 3;
+
+	return { x, y, w, h };
+}
+
 BrokenPad::BrokenPad(int x, int y) : Paddle(x, y, BROKEN) {
 	sprite[0] = new Sprite("brok-0");
 	sprite[1] = new Sprite("brok-1");

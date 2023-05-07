@@ -1,5 +1,19 @@
 #include "../Paddle.h"
 
+DefPad::~DefPad() {
+	delete sprite;
+	delete spring;
+}
+
+SDL_Rect DefPad::getRect() {
+	int x = pos.x - 3;
+	int y = pos.y - 3;
+	int w = sprite->w() + 3;
+	int h = sprite->h() + 3;
+
+	return { x, y, w, h };
+}
+
 DefPad::DefPad(int x, int y)
 	: Paddle(x, y, DEFAULT) {
 	sprite = new Sprite("pad");

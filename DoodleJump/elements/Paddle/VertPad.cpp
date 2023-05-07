@@ -18,6 +18,11 @@ VertPad::VertPad(int x, int y)
 	}
 }
 
+VertPad::~VertPad() {
+	delete sprite;
+	delete spring;
+}
+
 void VertPad::update() {
 	if (going_up) {
 		pos.y -= 1.3f;
@@ -32,6 +37,15 @@ void VertPad::update() {
 			going_up = true;
 		}
 	}
+}
+
+SDL_Rect VertPad::getRect() {
+	int x = pos.x - 7;
+	int y = pos.y - 77;
+	int w = sprite->w() + 7;
+	int h = sprite->h() + 154;
+
+	return { x, y, w, h };
 }
 
 int VertPad::touch(int l, int r, int y, int velo) {
