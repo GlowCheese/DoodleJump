@@ -52,23 +52,25 @@ void Doodle::handle() {
 
 	velo.x = std::max(-6.0f, std::min(6.0f, velo.x));
 
-	if (Game::event.type == SDL_MOUSEBUTTONDOWN) {
-		if (Game::event.button.button == SDL_BUTTON_LEFT
-		 && SDL_GetTicks() - lastShoot > 120) {
-			if (Rand(0, 1)) {
-				Sound::play("doo-shoot1");
-			} else {
-				Sound::play("doo-shoot2");
-			}
-			lastShoot = SDL_GetTicks();
+	if (SDL_GetTicks() - lastShoot <= 120) return;
 
-			SDL_Point center = { sprite->pos.x_int(), sprite->pos.y_int() };
-			center.x += 60 * sprite->zoom - njuska->w() / 2;
-
-			float angle = getAngle();
-
-			Bullet::add(center.x + sin(angle*acos(-1)/180), center.y, angle);
+	if ((Game::event.type == SDL_MOUSEBUTTONDOWN
+	&& Game::event.button.button == SDL_BUTTON_LEFT)
+	|| (Game::event.type == SDL_KEYUP
+	&& Game::event.key.keysym.sym == SDLK_SPACE)) {
+		if (Rand(0, 1)) {
+			Sound::play("doo-shoot1");
+		} else {
+			Sound::play("doo-shoot2");
 		}
+		lastShoot = SDL_GetTicks();
+
+		SDL_Point center = { sprite->pos.x_int(), sprite->pos.y_int() };
+		center.x += 60 * sprite->zoom - njuska->w() / 2;
+
+		float angle = Game::event.type == SDL_KEYUP ? 0 : getAngle();
+
+		Bullet::add(center.x + sin(angle*acos(-1)/180), center.y, angle);
 	}
 }
 

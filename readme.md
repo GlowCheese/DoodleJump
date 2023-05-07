@@ -15,7 +15,7 @@ You can download the latest version of Doodle Jump (v3.0) from [this link](https
 ## Game Controls
 - Move Left: `A` / `←`
 - Move Right: `D` / `→`
-- Shoot Pellets: `LMB` _(Left Mouse Button)_
+- Shoot Pellets: `LMB` / `Spacebar`
 
 ## Features
 - Easy-to-learn controls with intuitive button mapping.
