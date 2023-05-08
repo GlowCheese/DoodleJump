@@ -35,11 +35,12 @@ Main tasks:
 - [x] Adding game's levels for ascending difficulties
 - [x] Adding more theme songs
 - [ ] Add power-ups to enhance gameplay
+- [x] Optimize runtime
 - [x] Optimize memory usage
 - [ ] Enhance UI appearance
 - [ ] Adding more paddles
 - [ ] Adding more monsters
-- [ ] Allow switching between themes
+- [x] Allow switching between themes
 - [ ] Create database for data saving
 - [ ] Highscores?
 - [ ] Achievements?
