@@ -204,6 +204,8 @@
     <Image Include="asset\loading.png" />
     <Image Include="asset\menu.png" />
     <Image Include="asset\rickroll.png" />
+    <Image Include="asset\themesel1.png" />
+    <Image Include="asset\themesel2.png" />
     <Image Include="logo.jfif" />
     <Image Include="themes\def\bck.png" />
     <Image Include="themes\def\jetpack.png" />

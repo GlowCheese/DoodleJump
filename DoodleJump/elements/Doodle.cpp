@@ -37,12 +37,12 @@ void Doodle::setTex(std::string tex) {
 void Doodle::handle() {
 	const Uint8* state = SDL_GetKeyboardState(NULL);
 
-	if (state[SDL_SCANCODE_LEFT]) {
+	if (state[SDL_SCANCODE_LEFT] || state[SDL_SCANCODE_A]) {
 		setTex("left");
 		velo.x -= 1 + (velo.x > 0);
 	}
 
-	if (state[SDL_SCANCODE_RIGHT]) {
+	if (state[SDL_SCANCODE_RIGHT] || state[SDL_SCANCODE_D]) {
 		setTex("right");
 		velo.x += 1 + (velo.x < 0);
 	}
@@ -57,7 +57,8 @@ void Doodle::handle() {
 	if ((Game::event.type == SDL_MOUSEBUTTONDOWN
 	&& Game::event.button.button == SDL_BUTTON_LEFT)
 	|| (Game::event.type == SDL_KEYUP
-	&& Game::event.key.keysym.sym == SDLK_SPACE)) {
+	&& (Game::event.key.keysym.sym == SDLK_w
+	|| Game::event.key.keysym.sym == SDLK_UP))) {
 		if (Rand(0, 1)) {
 			Sound::play("doo-shoot1");
 		} else {
@@ -92,13 +93,15 @@ void Doodle::draw(int bright) {
 }
 
 void Doodle::update() {
-	double acc = 0.7, max_velo = -17.0;
-	     if (Game::Score() <  400)  { acc = 0.40; max_velo = -13.0; }
-	else if (Game::Score() <  850)  { acc = 0.45; max_velo = -13.7; }
-	else if (Game::Score() < 1350)  { acc = 0.50; max_velo = -14.5; }
-	else if (Game::Score() < 1900)  { acc = 0.55; max_velo = -15.2; }
-	else if (Game::Score() < 2500)  { acc = 0.60; max_velo = -15.8; }
-	else if (Game::Score() < 3150)  { acc = 0.65; max_velo = -16.5; }
+	double acc = 0.70, max_velo = -17.0;
+	     if (Game::Score() <  200)  { acc = 0.30; max_velo = -11.3; }
+	else if (Game::Score() <  430)  { acc = 0.35; max_velo = -12.2; }
+	else if (Game::Score() <  690)  { acc = 0.40; max_velo = -13.1; }
+	else if (Game::Score() < 1010)  { acc = 0.45; max_velo = -13.7; }
+	else if (Game::Score() < 1360)  { acc = 0.50; max_velo = -14.5; }
+	else if (Game::Score() < 1740)  { acc = 0.55; max_velo = -15.2; }
+	else if (Game::Score() < 2150)  { acc = 0.60; max_velo = -15.8; }
+	else if (Game::Score() < 2590)  { acc = 0.65; max_velo = -16.5; }
 
 	sprite->pos += velo; velo.y += acc;
 

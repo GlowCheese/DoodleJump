@@ -12,8 +12,12 @@ class MainMenu {
 public:
 	static Sprite* menu;
 	static Button* start;
+
 	static Button* leftTheme;
 	static Button* rightTheme;
+	static Sprite* themeSel1;
+	static Sprite* themeSel2;
+
 	static void init();
 	static void handle();
 	static void update();

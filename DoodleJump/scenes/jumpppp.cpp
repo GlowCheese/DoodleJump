@@ -4,7 +4,7 @@
 float newOffset;
 void fixOffset() {
 	newOffset = std::max({ newOffset, Global::offset, 300 - Global::doodle->sprite->pos.y });
-	Global::offset += (newOffset - Global::offset) * 0.07f;
+	Global::offset += (newOffset - Global::offset) * 0.05f;
 	
 	if (Game::Score() >= 3000) Global::offset += 0.5f;
 }

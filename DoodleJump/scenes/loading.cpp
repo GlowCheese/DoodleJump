@@ -14,6 +14,8 @@ Sprite* GameOver::bck;
 Button* MainMenu::start;
 Button* MainMenu::leftTheme;
 Button* MainMenu::rightTheme;
+Sprite* MainMenu::themeSel1;
+Sprite* MainMenu::themeSel2;
 
 void LoadingScene::run() {
 	try {
@@ -32,6 +34,8 @@ void LoadingScene::run() {
 
 		// loading textures
 		TexManager::add("menu", "asset/menu.png");
+		TexManager::add("themesel1", "asset/themesel1.png");
+		TexManager::add("themesel2", "asset/themesel2.png");
 
 		// buttons
 		for (std::string s : {"play", "left", "right"}) {
@@ -78,8 +82,18 @@ void LoadingScene::run() {
 		MainMenu::start->set_zoom(0.7f);
 
 		MainMenu::leftTheme = new Button("left-button");
-		MainMenu::leftTheme->set_pos(20, 200);
-		MainMenu::leftTheme->set_zoom(0.7f);
+		MainMenu::leftTheme->set_pos(17, 630);
+		MainMenu::leftTheme->set_zoom(0.15f);
+
+		MainMenu::rightTheme = new Button("right-button");
+		MainMenu::rightTheme->set_pos(390, 630);
+		MainMenu::rightTheme->set_zoom(0.15f);
+
+		MainMenu::themeSel1 = new Sprite("themesel1");
+		MainMenu::themeSel2 = new Sprite("themesel2");
+		MainMenu::themeSel1->zoom = MainMenu::themeSel2->zoom = MainMenu::menu->zoom;
+		MainMenu::themeSel1->pos = {  0, Game::Height() - MainMenu::themeSel1->h()    };
+		MainMenu::themeSel2->pos = { -1, Game::Height() - MainMenu::themeSel2->h()-17 };
 
 		Jumpppp::bck = new Sprite("bck");
 		Jumpppp::bck->fill_zoom();

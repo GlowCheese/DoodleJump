@@ -98,7 +98,7 @@ bool PadManager::add(int x, int y, PadType type) {
 	}
 
 	if (x == 1411) {
-		while (true) {
+		for (int tryNum = 1; tryNum <= 5; tryNum++) {
 			int new_x = type != HORIZONTAL
 			? Rand(10, Game::Width() - newPad->width - 10)
 			: Rand(80, Game::Width() - newPad->width - 80);
@@ -113,6 +113,7 @@ bool PadManager::add(int x, int y, PadType type) {
 			}
 
 			if (ok) { break; }
+			if (tryNum == 5) return false;
 		}
 	}
 

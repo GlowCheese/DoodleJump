@@ -3,7 +3,6 @@
 #include "../components.h"
 
 struct Pellet {
-	int angle;
 	float vx, vy;
 	bool visible;
 	Sprite* sprite;
@@ -12,7 +11,7 @@ struct Pellet {
 	float& y() { return sprite->pos.y; }
 
 	Pellet(int x, int y, int angle) : visible(true) {
-		sprite = new Sprite(Game::getThemeIMG("bullet"));
+		sprite = new Sprite("pellet");
 		this->x() = x; vy = -22 * cos(angle*acos(-1)/180);
 		this->y() = y; vx =  22 * sin(angle*acos(-1)/180);
 		sprite->zoom = 0.6f;
@@ -29,7 +28,6 @@ void Bullet::update() {
 	for (Pellet *&bul : BulArray) {
 		bul->sprite->pos.x += bul->vx;
 		bul->sprite->pos.y += bul->vy;
-		if (++bul->angle == 360) bul->angle = 0;
 		bul->vy += 1.0f;
 	}
 }
@@ -40,7 +38,7 @@ void Bullet::draw() {
 		if (!bul->visible || bul->y() >= Game::Height()) {
 			delete bul;
 		} else {
-			bul->sprite->draw(255, Global::offset, bul->angle);
+			bul->sprite->draw(255, Global::offset);
 			newBulArray.push_back(bul);
 		}
 	}

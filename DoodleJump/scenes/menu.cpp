@@ -4,7 +4,6 @@
 void MainMenu::init() {
 	Music::play("title");
 	start->state = FREE;
-	leftTheme->state = FREE;
 
 	Global::doodle->velo = Pair(0, 0);
 	Global::doodle->setPos(35, 410);
@@ -16,20 +15,23 @@ void MainMenu::init() {
 	PadManager::add(40, 530, DEFAULT);
 }
 void MainMenu::handle() {
-	start->handle();
-	const Uint8* state = SDL_GetKeyboardState(NULL);
-
 	int lastTheme = Game::selectedTheme;
 
-	if (Game::event.type == SDL_KEYUP) {
-		switch (Game::event.key.keysym.sym) {
-		case SDLK_1: TexManager::loadTheme(0, 1); break;
-		case SDLK_2: TexManager::loadTheme(1, 1); break;
-		case SDLK_3: TexManager::loadTheme(2, 1); break;
-		case SDLK_4: TexManager::loadTheme(3, 1); break;
-		case SDLK_5: TexManager::loadTheme(4, 1); break;
+	if (Game::selectedTheme > 0) {
+		leftTheme->state = FREE;
+		leftTheme->handle();
+		if (leftTheme->state == CLICKED) {
+			TexManager::loadTheme(Game::selectedTheme-1, 1);
 		}
-	}
+	} else leftTheme->state = CLICKED;
+
+	if (Game::selectedTheme+1 < Game::theme.size()) {
+		rightTheme->state = FREE;
+		rightTheme->handle();
+		if (rightTheme->state == CLICKED) {
+			TexManager::loadTheme(Game::selectedTheme+1, 1);
+		}
+	} else rightTheme->state = CLICKED;
 
 	if (lastTheme != Game::selectedTheme) {
 		Jumpppp::bck->setTex("bck");
@@ -47,6 +49,8 @@ void MainMenu::handle() {
 		PadManager::reset();
 		PadManager::add(40, 530, DEFAULT);
 	}
+
+	start->handle();
 }
 void MainMenu::render(int bright) {
 	SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, 255);
@@ -56,6 +60,13 @@ void MainMenu::render(int bright) {
 	start->draw(bright);
 	PadManager::draw(bright);
 	Global::doodle->draw(bright);
+	
+	themeSel1->pos.x = floor(-641 * themeSel1->zoom) * Game::selectedTheme;
+	themeSel1->draw(bright);
+	themeSel2->draw(bright);
+
+	leftTheme->draw(bright);
+	rightTheme->draw(bright);
 
 	SDL_RenderPresent(Game::renderer);
 }

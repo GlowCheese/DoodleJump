@@ -29,7 +29,7 @@ namespace TexManager {
 		if (reset) {
 			if (Game::selectedTheme == theme_id)
 				return;
-			for (int _ = 0; _ < 17; _++) {
+			for (int _ = 0; _ < 19; _++) {
 				delete collection.back();
 				collection.pop_back();
 			}
@@ -56,6 +56,17 @@ namespace TexManager {
 		TexManager::add("spring-1", theme + "tiles.png", Rect(808, 230, 34, 55));
 		TexManager::add("horz-pad", theme + "tiles.png", Rect(0, 34, 118, 34));
 		TexManager::add("vert-pad", theme + "tiles.png", Rect(0, 71, 118, 34));
+
+		SDL_Rect tmp = { 0, 0, 0, 0 };
+		switch (theme_id) {
+		case 0: tmp = Rect(01, 02, 22, 23); break;
+		case 1: tmp = Rect(67, 02, 27, 28); break;
+		case 2: tmp = Rect(99, 03, 27, 22); break;
+		case 3: tmp = Rect(03, 66, 30, 40); break;
+		case 4: tmp = Rect(99, 03, 27, 22); break;
+		}
+
+		TexManager::add("pellet", "asset/bullets.png", tmp);
 	}
 
 	void add(std::string title, std::string path, SDL_Rect src) {
