@@ -16,7 +16,12 @@ void GameOver::render(int pos, int bright = 255) {
 	SDL_RenderClear(Game::renderer);
 
 	bck->draw(bright);
+
+	Writer::size = 20;
 	Writer::write("Game Over!", Game::Width() / 2, pos, CENTER);
+
+	Writer::size = 15;
+	Writer::write("Your score is: " + std::to_string(Game::Score()), Game::Width() / 2, pos + 40, CENTER);
 
 	SDL_RenderPresent(Game::renderer);
 }

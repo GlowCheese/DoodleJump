@@ -94,14 +94,13 @@ void Doodle::draw(int bright) {
 
 void Doodle::update() {
 	double acc = 0.70, max_velo = -17.0;
-	     if (Game::Score() <  200)  { acc = 0.30; max_velo = -11.3; }
-	else if (Game::Score() <  430)  { acc = 0.35; max_velo = -12.2; }
-	else if (Game::Score() <  690)  { acc = 0.40; max_velo = -13.1; }
-	else if (Game::Score() < 1010)  { acc = 0.45; max_velo = -13.7; }
-	else if (Game::Score() < 1360)  { acc = 0.50; max_velo = -14.5; }
-	else if (Game::Score() < 1740)  { acc = 0.55; max_velo = -15.2; }
-	else if (Game::Score() < 2150)  { acc = 0.60; max_velo = -15.8; }
-	else if (Game::Score() < 2590)  { acc = 0.65; max_velo = -16.5; }
+	     if (Game::Score() <  400) { acc = 0.35; max_velo = -12.2; }
+	else if (Game::Score() <  800) { acc = 0.40; max_velo = -13.1; }
+	else if (Game::Score() < 1200) { acc = 0.45; max_velo = -13.7; }
+	else if (Game::Score() < 1600) { acc = 0.50; max_velo = -14.5; }
+	else if (Game::Score() < 2000) { acc = 0.55; max_velo = -15.2; }
+	else if (Game::Score() < 2400) { acc = 0.60; max_velo = -15.8; }
+	else if (Game::Score() < 2800) { acc = 0.65; max_velo = -16.5; }
 
 	sprite->pos += velo; velo.y += acc;
 

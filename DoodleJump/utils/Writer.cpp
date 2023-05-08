@@ -1,15 +1,22 @@
 #pragma once
 #include "../utils.h"
+#include <string>;
 
 int Writer::size = 20;
 SDL_Texture* Writer::tex;
 SDL_Color Writer::color = { 0, 0, 0 };
 
+std::map<std::string, SDL_Texture*> cache;
+
 void Writer::loadTex(std::string message) {
-	SDL_Surface* tempSurface = TTF_RenderText_Blended(Game::Font(), message.c_str(), color);
-	tex = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);
-	SDL_FreeSurface(tempSurface);
-	if (tex == nullptr) throw(TEXTURE_ERROR);
+	if (cache.find(message) == cache.end()) {
+		SDL_Surface* tempSurface = TTF_RenderText_Blended(Game::Font(), message.c_str(), color);
+		tex = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);
+		SDL_FreeSurface(tempSurface);
+		if (tex == nullptr) throw(TEXTURE_ERROR);
+
+		if (not std::all_of(message.begin(), message.end(), ::isdigit)) cache[message] = tex;
+	} else tex = cache[message];
 }
 
 void Writer::write(int xpos, int ypos) {
@@ -34,6 +41,6 @@ void Writer::write(std::string message, int xpos, int ypos, Align align) {
 	case CENTER: write(xpos - width / 2, ypos); break;
 	case RIGHT: write(xpos - width, ypos); break;
 	}
-	
-	SDL_DestroyTexture(tex);
+
+	if (std::all_of(message.begin(), message.end(), ::isdigit)) SDL_DestroyTexture(tex);
 }

@@ -46,6 +46,7 @@ void Jumpppp::render() {
 	Global::doodle->draw();
 	Bullet::draw();
 
+	Writer::size = 15;
 	Writer::write(std::to_string(Game::Score()), Game::Width() - 10, 10, RIGHT);
 
 	SDL_RenderPresent(Game::renderer);
