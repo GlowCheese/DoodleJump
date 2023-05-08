@@ -1,16 +1,10 @@
 # Doodle Jump (v3.0)
 
-![](https://i.kym-cdn.com/photos/images/newsfeed/001/870/641/6c9.gif)
-
-~~Don't ask me about where the game preview is,~~
-
-~~cuz I don't know about it either~~
-
 ## Description
 Doodle Jump (v3.0) is an endless game developed as a submission for an advanced programming course at university. Take control of Doodle, our fearless character, and help him ascend to great heights! The higher you go, the more points you earn. But beware of the obstacles and monsters that stand in your way. Use your sharp shooting skills to eliminate the monsters and clear your path to success. Can you reach the top and claim your spot on the global leaderboard?
 
 ## Download
-You can download the latest version of Doodle Jump (v3.0) from [this link](https://ghostbin.me/645773fe3b8c5).
+You can download the latest version of Doodle Jump (v3.0) from [this link](https://github.com/GlowCheese/DoodleJump/releases).
 
 ## Game Controls
 - Move Left: `A` / `←`
