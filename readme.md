@@ -1,6 +1,6 @@
 # Doodle Jump (v3.0)
 
-https://user-images.githubusercontent.com/119146082/236752305-c305fedf-2ec0-4029-ba07-0f33a62c06e0.mp4
+Gameplay Preview: [push me!](https://youtu.be/U0Joe8OY3Eo)
 
 ## Description
 Doodle Jump (v3.0) is an endless game developed as a submission for an advanced programming course at university. Take control of Doodle, our fearless character, and help him ascend to great heights! The higher you go, the more points you earn. But beware of the obstacles and monsters that stand in your way. Use your sharp shooting skills to eliminate the monsters and clear your path to success. Can you reach the top and claim your spot on the global leaderboard?
